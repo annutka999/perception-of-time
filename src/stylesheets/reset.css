@@ -1,0 +1,9 @@
+/* Сброс браузерных стилей */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,svg,canvas,video{display:block;max-width:100%}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+ul,ol{list-style:none}
+a{color:inherit}

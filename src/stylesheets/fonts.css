@@ -1,0 +1,8 @@
+/* Шрифты Google подключены ссылкой в index.html.
+   Свои шрифты: положите файл в src/fonts и раскомментируйте @font-face.
+   @font-face{font-family:'MyFont';src:url('../fonts/MyFont.woff2') format('woff2');font-weight:800;font-display:swap} */
+:root{
+  --g:'Inter Tight',Arial,sans-serif;      /* заголовки и основной текст */
+  --s:'Cormorant Garamond',Georgia,serif;  /* курсивные вопросы */
+  --m:'JetBrains Mono',monospace;          /* время, подписи */
+}
