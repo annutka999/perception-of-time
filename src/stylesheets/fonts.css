@@ -1,8 +1,8 @@
-/* Шрифты Google подключены ссылкой в index.html.
-   Свои шрифты: положите файл в src/fonts и раскомментируйте @font-face.
-   @font-face{font-family:'MyFont';src:url('../fonts/MyFont.woff2') format('woff2');font-weight:800;font-display:swap} */
+/* Шрифты Google подключены ссылками в index.html (все три с лицензией SIL OFL).
+   Свои шрифты: положите файлы в src/fonts и добавьте @font-face, например:
+   @font-face{font-family:'Literata';src:url('../fonts/Literata.woff2') format('woff2');font-display:swap} */
 :root{
-  --g:'Inter Tight',Arial,sans-serif;      /* заголовки и основной текст */
-  --s:'Cormorant Garamond',Georgia,serif;  /* курсивные вопросы */
-  --m:'JetBrains Mono',monospace;          /* время, подписи */
+  --live:'Roboto Flex',Arial,sans-serif;   /* переживание: заголовки */
+  --mem:'Literata',Georgia,serif;          /* память: вопросы и текст */
+  --clk:'Martian Mono',monospace;          /* часы: только измеренное */
 }

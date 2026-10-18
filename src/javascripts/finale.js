@@ -23,7 +23,15 @@
     }; });
   }
   // шаг 5: протокол — пять времён одного материала
+  // негатив читателя: экспозиция кадра = реальное время в зоне; запомнившийся момент — бумажное окно
+  function neg() {
+    var mx = 1, z, h = ''; for (z = 1; z <= 9; z++) mx = Math.max(mx, S.dwell[z] || 0);
+    for (z = 1; z <= 9; z++) { var d = S.dwell[z] || 0, big = chosen && chosen.z === z;
+      h += '<figure class="fr' + (big ? ' big' : '') + '" style="--ex:' + (.15 + .85 * d / mx).toFixed(2) + (big ? ';--fb:var(--paper);--sh:var(--blue);--ex:1' : '') + '"><div class="ph">' + T.frameSVG(z * 11 + 3) + '</div><figcaption><time>0' + z + '</time><span>' + Math.round(d) + ' с</span></figcaption></figure>'; }
+    $('#neg').innerHTML = h;
+  }
   function sum() {
+    neg();
     var d = days(), ex = S.ex !== null ? 'десять секунд по ощущению: ' + f(S.ex) + ' с' + (S.ex2 !== null ? '; занятым: ' + f(S.ex2) + ' с' : '') : 'вы не проходили пример в зоне 5';
     var cr = dated.length > 1 ? d + ' дн. (' + T.fd(T.D(dated[0].date)) + ' — ' + T.fd(T.D(dated[dated.length - 1].date)) + ')' : dated.length === 1 ? T.fd(T.D(dated[0].date)) + ' (одна дата)' : '[даты — заполнить]';
     var R = [['время события', 'день из карты: 15 ч 39 мин по часам'], ['время переживания', ex], ['время в памяти', 'ваш запомнившийся момент: «' + chosen.t + '»'], ['время чтения', 'активно ' + T.fmt(S.frozen !== null ? S.frozen : S.active) + ' · ваша оценка: ' + $('#pick').textContent + ' мин'], ['время создания', cr]];
@@ -31,16 +39,4 @@
   }
   $$('[data-go]').forEach(function (b) { b.onclick = function () { var g = b.dataset.go; if (g === 's3') auth(); if (g === 's4') mom(); show(g); }; });
 
-  // три циферблата финала: в моменте / по часам / в памяти
-  function clock(id) {
-    var e = $(id), s = ''; for (var i = 0; i < 60; i++) s += '<line x1="100" y1="4" x2="100" y2="' + (i % 5 ? 7 : 10) + '" transform="rotate(' + i * 6 + ' 100 100)"/>';
-    for (var k = 1; k < 13; k++) s += '<text x="' + (100 + Math.sin(k * Math.PI / 6) * 80) + '" y="' + (103 - Math.cos(k * Math.PI / 6) * 80) + '">' + k + '</text>';
-    e.innerHTML = s + '<line class="h" x1="100" y1="100" x2="100" y2="38"/><line class="h s" x1="100" y1="112" x2="100" y2="22"/><circle cx="100" cy="100" r="3.5"/>';
-    var h = e.querySelectorAll('.h'); return function (d) { h[0].setAttribute('transform', 'rotate(' + d / 12 + ' 100 100)'); h[1].setAttribute('transform', 'rotate(' + d + ' 100 100)'); };
-  }
-  var C = [null, clock('#c1'), clock('#c2'), clock('#c3')], d2 = 0, t0 = performance.now() / 1000;
-  T.onFrame(function (dt) {
-    if (!$('#s5').classList.contains('on')) return; var t = performance.now() / 1000 - t0;
-    C[1](t * 6); d2 += dt * 6 * (1 + .9 * Math.sin(t * .8) + .5 * Math.sin(t * 2.3)); C[2](d2); C[3](Math.floor(t / 3) * 40);
-  });
 })();

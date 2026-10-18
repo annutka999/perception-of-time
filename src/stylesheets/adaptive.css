@@ -1,15 +1,14 @@
 /* Мобильная композиция: перестраивает ритм, а не просто уменьшает десктоп */
-@media(max-width:900px){.nz{grid-template-columns:1fr;gap:2vh;padding-top:11vh}.nz__clock canvas{width:38vh;height:38vh;aspect-ratio:auto}}
+@media(max-width:900px){.nz{grid-template-columns:1fr;gap:2vh;padding-top:11vh}.nz__clock canvas{width:38vh;height:38vh;aspect-ratio:auto}.has-note{grid-template-columns:1fr;gap:1em}}
 @media(max-width:700px){
-  section,.zone{padding:13vh 5vw}.zn{left:5vw}.lay{display:none}
-  .hero{padding-top:14vh}#ttl{font-size:clamp(52px,16vw,90px)}.intro .i2,.intro .i3{margin-left:0}
+  section,.zone{padding:13vh 5vw}.lay{display:none}
+  .hero{padding-top:13vh}.hero__t{font-size:clamp(34px,12vw,64px)}.hero h1{font-size:clamp(52px,19vw,110px)}.hero__sub{font-size:clamp(20px,5.6vw,28px)}.intro .i2,.intro .i3{margin-left:0}
   .nz{padding:11vh 5vw 4vh}.nt time{font-size:clamp(38px,12vw,60px)}.nz h2{font-size:clamp(26px,8vw,40px)}
   .day3{height:200vh}.ruler{left:62px}.ev3 time{width:50px;font-size:.75rem}.ev3::before{width:34px;margin-left:8px;margin-right:10px}
-  #z4 .pin{padding:13vh 5vw 4vh}#grid{grid-template-columns:repeat(3,1fr)}.ev span{font-size:.55rem}
-  .cols,.three{grid-template-columns:1fr}.mos.b{grid-template-columns:repeat(3,1fr)}
+  #z4 .pin{padding:12vh 5vw 3vh}#z4{height:340vh}#frames{grid-template-columns:repeat(3,1fr);gap:8px}.fr figcaption{flex-direction:column;gap:0}.fr time{font-size:.58rem}#neg{grid-template-columns:repeat(3,1fr);gap:8px}
+  .cols,.fcols{grid-template-columns:1fr}
   .opts{flex-direction:column}.opt{text-align:center}
   .bar{flex-direction:column;align-items:stretch;gap:6px}.bar .mono{width:auto}
   #mom{flex-direction:column;height:60vh}.sumrow{grid-template-columns:1fr;gap:4px}
-  .final{margin:8vh -5vw 0;padding:10vh 5vw}.st-steps li{min-width:70px;font-size:.62rem}
-  canvas.ht{width:38vw}
+  .st-steps li{min-width:70px;font-size:.62rem}
 }
