@@ -1,3 +1,4 @@
+window.T && window.T.mods.push('scroll');
 /* Скролл: появление и «забывание», прорисовка, проявка бумаги в синьку, поверхности, зоны */
 (function () {
   var T = window.T, S = T.S, cl = T.cl, $ = function (s) { return document.querySelector(s); }, $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };

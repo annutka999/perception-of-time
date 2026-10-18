@@ -1,3 +1,4 @@
+window.T && window.T.mods.push('cursor');
 /* Курсор: кольцо, увеличивается над кнопками; клик посылает круг. Ничего не оставляет за собой. */
 (function () {
   if (!matchMedia('(hover:hover) and (pointer:fine)').matches || matchMedia('(prefers-reduced-motion:reduce)').matches) return;

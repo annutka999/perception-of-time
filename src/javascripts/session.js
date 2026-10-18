@@ -1,3 +1,4 @@
+window.T && window.T.mods.push('session');
 /* Общее состояние и один общий цикл анимации */
 (function () {
   var T = window.T;
@@ -11,12 +12,12 @@
   var fns = []; T.onFrame = function (f) { fns.push(f); };
   var last = performance.now(), ly = window.scrollY;
   function loop(n) {
+    requestAnimationFrame(loop); // сначала планируем следующий кадр: ошибка в одном модуле не остановит остальные
     var dt = Math.min(.25, (n - last) / 1000); last = n;
     if (document.visibilityState === 'visible' && T.S.frozen === null) T.S.active += dt;
     T.S.vel = T.S.vel * .9 + Math.abs(window.scrollY - ly) * .1; ly = window.scrollY;
     T.S.p = T.cl(window.scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight));
-    for (var i = 0; i < fns.length; i++) fns[i](dt, n / 1000);
-    requestAnimationFrame(loop);
+    for (var i = 0; i < fns.length; i++) { try { fns[i](dt, n / 1000); } catch (e) { if (T.errs.length < 30) T.errs.push('кадр: ' + e.message); } }
   }
   requestAnimationFrame(loop);
 })();

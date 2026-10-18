@@ -1,3 +1,4 @@
+window.T && window.T.mods.push('finale');
 /* Зона 9: вопрос → «Правильно» + реальное время → время автора → память читателя → протокол и финал */
 (function () {
   var T = window.T, S = T.S, $ = function (s) { return document.querySelector(s); }, $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };

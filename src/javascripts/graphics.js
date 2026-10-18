@@ -1,10 +1,14 @@
+window.T && window.T.mods.push('graphics');
 /* Графика: палитра из CSS и экран бессонной ночи (циферблат с двумя дугами и маятник) */
 (function () {
   var T = window.T, S = T.S, cl = T.cl, $ = function (s) { return document.querySelector(s); };
   // цвета читаются из CSS-переменных: смена --blue в style.css меняет и графику
+  // Если стили ещё не успели загрузиться (так бывает на GitHub Pages), берутся запасные значения,
+  // а после полной загрузки страницы палитра перечитывается.
+  var DEF = { '--paper': [238, 235, 227], '--ink': [21, 21, 19], '--blue': [23, 64, 184], '--blue-hi': [143, 176, 255], '--blue-lt': [220, 229, 255] };
   T.pal = function () {
-    var cs = getComputedStyle(document.documentElement), hx = function (n) { var v = cs.getPropertyValue(n).trim(); return [1, 3, 5].map(function (i) { return parseInt(v.slice(i, i + 2), 16); }); };
-    T.P = { paper: hx('--paper'), ink: hx('--ink'), blue: hx('--blue'), hi: hx('--blue-hi'), lt: hx('--blue-lt') };
+    var cs = getComputedStyle(document.documentElement), ok = true, hx = function (n) { var v = cs.getPropertyValue(n).trim(); if (!/^#[0-9a-f]{6}$/i.test(v)) { ok = false; return DEF[n]; } return [1, 3, 5].map(function (i) { return parseInt(v.slice(i, i + 2), 16); }); };
+    T.P = { paper: hx('--paper'), ink: hx('--ink'), blue: hx('--blue'), hi: hx('--blue-hi'), lt: hx('--blue-lt') }; T.palOk = ok;
   };
   T.pal();
   var rgba = function (a, al) { return 'rgba(' + a.join(',') + ',' + al + ')'; };
@@ -17,6 +21,7 @@
   }
   // след минутной стрелки в длинной выдержке
   function sweep(x, cx, cy, r, th, len, al) {
+    if (!x.createConicGradient) return;
     var L = T.P.paper, g = x.createConicGradient(th - len, cx, cy), f = len / 6.2832;
     g.addColorStop(0, rgba(L, 0)); g.addColorStop(f, rgba(L, al)); g.addColorStop(Math.min(.9999, f + .0001), rgba(L, 0));
     x.fillStyle = g; x.beginPath(); x.arc(cx, cy, r, 0, 7); x.fill();
@@ -54,5 +59,6 @@
     if (i !== ni) { ni = i; var q = $('#nq'); q.textContent = T.NIGHT[i][2]; q.classList.remove('sw'); void q.offsetWidth; q.classList.add('sw'); Array.prototype.forEach.call($('#n5').children, function (li, j) { li.classList.toggle('on', j === i); }); }
   }
   T.onFrame(function (dt, t) { if (T.vis.z2) night(t); });
+  addEventListener('load', function () { T.pal(); rs(); if (T.onScroll) T.onScroll(); });
   T.resetNight = rs;
 })();

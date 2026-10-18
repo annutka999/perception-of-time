@@ -1,3 +1,4 @@
+window.T && window.T.mods.push('nav');
 /* Содержание (право выхода и ориентация) и «пройти заново» */
 (function () {
   var $ = function (s) { return document.querySelector(s); }, toc = $('#toc'), b = $('#tocb');

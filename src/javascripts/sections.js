@@ -1,3 +1,4 @@
+window.T && window.T.mods.push('sections');
 /* Сборка содержимого зон из данных (data.js) */
 (function () {
   var T = window.T, $ = function (s) { return document.querySelector(s); }, $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
