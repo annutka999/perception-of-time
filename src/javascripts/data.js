@@ -33,11 +33,20 @@ T.MOMENTS = [
   { z:8, t:'Возраст', q:'120 участников, 20–91 год' }
 ];
 
+// Условный день. Если день записан реальным человеком, поставьте conditional: false
+// и в source опишите, откуда записи, как они обезличены и как сопоставлялись с воспоминанием.
+T.DAY = { conditional: true, source: '' };
+
+// Зона 6: два условных дня с 08:00 до 20:00; время эпизода, оставшегося в памяти, показано для иллюстрации.
+T.DAYS = { A: ['09:40', '16:20'], B: ['08:30', '09:15', '10:40', '11:30', '12:50', '14:10', '15:35', '17:20', '19:10'] };
+
 T.sec = function (t) { var a = t.split(':'); return a[0] * 60 + +a[1]; };
 T.D = function (s) { return new Date(s + 'T00:00:00'); };
 T.fd = function (d) { return d.toLocaleDateString('ru-RU', { day:'numeric', month:'long', year:'numeric' }); };
+// Врезка с историей создания показывается только с настоящими датами. Поле url (необязательно) — ссылка на черновик.
+T.authorSteps = function () { return T.AUTHOR.steps.filter(function (s) { return s.date; }); };
 T.authorList = function () {
-  return T.AUTHOR.steps.map(function (s) {
-    return '<li><span>' + s.label + '</span><b class="' + (s.date ? '' : 'ph') + '">' + (s.date ? T.fd(T.D(s.date)) : '[дата — заполнить]') + '</b></li>';
+  return T.authorSteps().map(function (s) {
+    return '<li><span>' + (s.url ? '<a href="' + s.url + '" target="_blank" rel="noopener">' + s.label + ' ↗</a>' : s.label) + '</span><b>' + T.fd(T.D(s.date)) + '</b></li>';
   }).join('');
 };

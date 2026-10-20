@@ -1,56 +1,44 @@
 /* Дизайн-система «Проявка»: цвета, типографика, метки, компоненты.
    Бумага = записанное и объяснённое. Синий = всё, что не измеряется часами: переживание и память. */
-:root{--paper:#EEEBE3;--ink:#151513;--graphite:#6E6C66;
+:root{--paper:#EEEBE3;--ink:#151513;--graphite:#55534E;
   --blue:#1740B8;--blue-hi:#8FB0FF;--blue-lt:#DCE5FF; /* оттенок синего: меняйте здесь (или откройте index.html#dev) */
   box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#E2DFD7}}
 /* три поверхности */
 .sp{--bg:var(--paper);--fg:var(--ink);--mu:var(--graphite);--k:var(--blue)}
-.si{--bg:var(--ink);--fg:var(--paper);--mu:#9B9992;--k:var(--blue-hi)}
+.si{--bg:var(--ink);--fg:var(--paper);--mu:#B8B6AF;--k:var(--blue-hi)}
 .sb{--bg:var(--blue);--fg:var(--paper);--mu:var(--blue-lt);--k:var(--paper)}
 .sp,.si,.sb{background:var(--bg);color:var(--fg)}
 body{background:var(--paper);color:var(--ink);font:400 18px/1.6 var(--mem);font-optical-sizing:auto}
-h1{font:800 clamp(52px,12.5vw,200px)/.9 var(--live);font-variation-settings:'wdth' 100;text-transform:uppercase;letter-spacing:-.03em}
-h2{font:700 clamp(32px,5.4vw,84px)/.95 var(--live);font-variation-settings:'wdth' 85;letter-spacing:-.025em}
+h1{font:800 clamp(52px,12.5vw,200px)/.92 var(--live);font-variation-settings:'wdth' 100;letter-spacing:-.008em}
+h2{font:700 clamp(32px,5.4vw,84px)/.95 var(--live);font-variation-settings:'wdth' 85;letter-spacing:-.012em}
 .q{font:italic 400 clamp(26px,3.8vw,56px)/1.1 var(--mem);font-variation-settings:'opsz' 72;max-width:18em}
 .q.big{font-size:clamp(30px,5vw,76px);max-width:16em}
-.lbl,.mono{font:500 .72rem var(--clk);letter-spacing:.08em;text-transform:uppercase}
+/* РОЛИ ТЕКСТА. Roboto Flex: заголовки и кнопки. Literata: текст, подписи и речь (курсив — речь автора и героев). Martian Mono: только измеренные числа. */
+.lbl,.mono,.cap{font:400 1rem/1.5 var(--mem);letter-spacing:0}
+.cap{color:var(--mu);max-width:34em;margin-top:1em}
 .mu{color:var(--mu)}.k{color:var(--k)}
 p{max-width:36em;margin-top:1em}
 a{text-decoration-thickness:1px;text-underline-offset:4px}a:hover{color:var(--k)}
 :focus-visible{outline:2px solid var(--k);outline-offset:3px}
-.zn{position:absolute;top:calc(3vh + 40px);left:5vw;font:500 .72rem var(--clk);letter-spacing:.1em;color:var(--mu);font-style:normal;z-index:2}
-.num{font:800 clamp(60px,12vw,190px)/.85 var(--live);letter-spacing:-.04em;font-variation-settings:'wdth' 85}
-.btn{font:500 .8rem var(--clk);text-transform:uppercase;letter-spacing:.08em;background:var(--fg);color:var(--bg);padding:15px 24px;border-radius:99px;margin:6px 8px 6px 0}
+.zn{position:absolute;top:calc(3vh + 40px);left:5vw;font:400 1rem var(--mem);letter-spacing:0;color:var(--mu);font-style:normal;z-index:2}
+.num{font:300 clamp(60px,12vw,190px)/.9 var(--clk);letter-spacing:-.06em}
+.btn{font:600 1rem var(--live);letter-spacing:0;background:var(--fg);color:var(--bg);padding:15px 24px;border-radius:99px;margin:6px 8px 6px 0}
 .btn.o{background:none;color:inherit;border:1px solid currentColor}
 /* МЕТКИ СИСТЕМЫ */
 .tag{font:500 .8rem var(--clk);border:1px solid currentColor;padding:5px 9px;display:inline-block}
 .dot{width:18px;height:18px;border-radius:50%;background:var(--k);display:inline-block}
-.note{font:italic 400 .95rem/1.4 var(--mem);border-left:1px solid currentColor;padding-left:12px;color:var(--mu)}
-.ruler{background:repeating-linear-gradient(180deg,currentColor 0 1px,transparent 1px 8px)}
+.note{font:400 1rem/1.5 var(--mem);border-left:1px solid currentColor;padding-left:14px;color:var(--mu)}
+.ruler{background:currentColor;opacity:.5}
 /* ФОТОГРАММЫ И КАДРЫ (нарисованы кодом, цвета из переменных) */
-.crop{position:relative;padding:18px;color:inherit}
-.crop::before{content:'';position:absolute;inset:0;pointer-events:none;background:
- linear-gradient(currentColor,currentColor) left top/14px 1px no-repeat,linear-gradient(currentColor,currentColor) left top/1px 14px no-repeat,
- linear-gradient(currentColor,currentColor) right top/14px 1px no-repeat,linear-gradient(currentColor,currentColor) right top/1px 14px no-repeat,
- linear-gradient(currentColor,currentColor) left bottom/14px 1px no-repeat,linear-gradient(currentColor,currentColor) left bottom/1px 14px no-repeat,
- linear-gradient(currentColor,currentColor) right bottom/14px 1px no-repeat,linear-gradient(currentColor,currentColor) right bottom/1px 14px no-repeat}
-.fr{margin:0}
-.fr .ph{aspect-ratio:4/3;background:var(--fb,var(--blue));position:relative;overflow:hidden;outline:1px solid rgba(238,235,227,.3)}
-.fr .ph svg{position:absolute;inset:0;width:100%;height:100%}
-.sh{fill:var(--sh,var(--paper));stroke:var(--sh,var(--paper));opacity:var(--ex,1)}
-.fr figcaption{display:flex;gap:8px;align-items:baseline;margin-top:6px}
-.fr time{font:500 .68rem var(--clk)}.fr figcaption span{font:600 clamp(11px,1.1vw,15px)/1.1 var(--live);text-transform:uppercase}
-.efr{width:clamp(56px,7vw,92px)}
-.perf{height:10px;margin:8px 0;opacity:.5;background:radial-gradient(circle at 5px 5px,currentColor 2.5px,transparent 3px) 0 0/16px 10px repeat-x}
 /* ссылки на источники и содержание */
-.cit{font:500 .62em var(--clk);vertical-align:super;text-decoration:none;color:var(--k);padding:0 1px}
+.cit{font:500 .75em var(--clk);vertical-align:super;text-decoration:none;color:var(--k);padding:0 1px}
 .src{counter-reset:s}.src li{counter-increment:s;scroll-margin-top:30vh}.src li::before{content:'[' counter(s) '] ';font:500 .8em var(--clk);color:var(--k)}.src li:target{outline:1px solid var(--k);outline-offset:6px}
 .hudb{pointer-events:auto;color:inherit;text-align:right}
 #toc{position:fixed;inset:0;z-index:50;padding:12vh 5vw;overflow:auto}#toc[hidden]{display:none}
 #toc>button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:4vw}
 #toc ol{max-width:46em}#toc a{display:flex;gap:18px;align-items:baseline;text-decoration:none;border-top:1px solid rgba(238,235,227,.2);padding:8px 0;font:700 clamp(26px,4.6vw,60px)/1.05 var(--live);font-variation-settings:'wdth' 85;letter-spacing:-.02em}
-#toc a span{font:500 .75rem var(--clk);color:var(--mu);width:2.4em}#toc a:hover,#toc a:focus-visible{color:var(--k)}
+#toc a span{font:500 .85rem var(--clk);color:var(--mu);width:2.4em}#toc a:hover,#toc a:focus-visible{color:var(--k)}
 /* ночь */
 .nt{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-top:5vh}
 .nt time{font:400 clamp(46px,7vw,110px)/1 var(--clk);letter-spacing:-.05em}
@@ -59,48 +47,115 @@ a{text-decoration-thickness:1px;text-underline-offset:4px}a:hover{color:var(--k)
 #nq{margin-top:3vh;min-height:2.3em}
 /* день по минутам */
 .ev3 time{font:500 .9rem var(--clk)}
-.ev3 span{font:600 clamp(18px,2.6vw,34px)/1 var(--live);font-variation-settings:'wdth' 100;text-transform:uppercase;letter-spacing:-.01em}
+.ev3 span{font:600 clamp(18px,2.6vw,34px)/1 var(--live);font-variation-settings:'wdth' 100;letter-spacing:-.01em}
 .ev3.k span,.ev3.k time{color:var(--k)}
 .author{border:1px dashed currentColor;padding:20px 24px;max-width:38em}
 .author li,.stp li{display:flex;justify-content:space-between;gap:20px;padding:6px 0;border-bottom:1px dotted currentColor}
-.ph{color:var(--k);border-bottom:1px dashed currentColor;display:inline-block}
+
 /* проявка: кадры дня */
 #rows .r{display:flex;gap:16px;align-items:baseline;padding:3px 0;border-top:1px solid currentColor}
 #rows time{font:500 .8rem var(--clk);width:5em;flex:none}
-#rows .r span{font:600 clamp(18px,2.6vw,32px)/1.15 var(--live);text-transform:uppercase;display:inline-block}
-#mp circle{fill:var(--paper)}#mp text{font:500 15px var(--clk);fill:var(--blue);text-anchor:middle}#mp .lb{font-size:13px;fill:var(--paper);text-transform:uppercase}
+#rows .r span{font:600 clamp(18px,2.6vw,32px)/1.15 var(--live);display:inline-block}
+#mp circle{fill:var(--paper)}#mp text{font:500 15px var(--clk);fill:var(--blue);text-anchor:middle}#mp .lb{font-size:13px;fill:var(--paper)}
 /* зона 5: сцена опыта */
-.stage{padding:clamp(20px,3vw,44px);margin:5vh 0 6vh;min-height:min(64vh,520px);position:relative;overflow:hidden}
-.st-steps{display:flex;gap:6px 22px;flex-wrap:wrap;color:var(--mu);margin-bottom:5vh}.st-steps li{transition:color .4s,border-color .4s;border-top:2px solid rgba(238,235,227,.2);padding-top:8px;flex:1;min-width:90px;font:500 .72rem var(--clk);text-transform:uppercase;letter-spacing:.08em}
-.st-steps li.on{color:var(--k);border-color:var(--k)}
+
+
+
 .st-v{display:none}.st-v.on{display:block}
-#st-dots{position:relative;height:min(30vh,240px);margin:3vh 0;border:1px dashed var(--mu)}
-#st-dots button{position:absolute;width:44px;height:44px;margin:-22px;border-radius:50%;background:var(--fg)}
-.pulse{width:14px;height:14px;border-radius:50%;background:var(--k);margin-bottom:3vh}
+
+
+
 .scale{position:relative;height:56px;margin:5vh 0 3vh;border-bottom:1px solid var(--fg);background:repeating-linear-gradient(90deg,var(--fg) 0 1px,transparent 1px 5%) bottom/100% 10px no-repeat}
-.mk{position:absolute;bottom:0;width:2px;height:44px;background:var(--fg)}.mk em{position:absolute;top:-22px;left:-30px;width:62px;text-align:center;font:500 .72rem var(--clk);font-style:normal}
+.mk{position:absolute;bottom:0;width:2px;height:44px;background:var(--fg)}.mk em{position:absolute;top:-22px;left:-30px;width:62px;text-align:center;font:500 .85rem var(--clk);font-style:normal}
 .mk.you,.mk.you2{display:none;height:30px;background:var(--k)}.mk.you2{background:var(--mu)}.mk.you em,.mk.you2 em{top:34px}.mk.you em{color:var(--k)}
 /* зона 6 */
 .day{padding:clamp(18px,2.6vw,32px);border:1px solid var(--line,rgba(21,21,19,.25))}.day.sb{border-color:transparent}
-.tk{font:400 clamp(44px,6vw,90px)/1 var(--clk);letter-spacing:-.05em;margin:3vh 0 1vh}
-.eps{display:flex;flex-wrap:wrap;gap:10px;margin:3vh 0 1vh;min-height:40px}
 /* зона 7 */
-#sc{display:flex;flex-wrap:wrap;gap:6px 4px;margin:5vh 0 2vh}#sc i{width:12px;height:12px;border-radius:50%;background:currentColor;flex:none}
-#sc i.x{transform:scale(.22);opacity:.3}#sc i.y{transform:scale(2);background:var(--paper);margin:0 9px}
+#sc{display:grid;grid-template-columns:repeat(60,minmax(0,1fr));align-items:center;margin:5vh 0 2vh;min-height:30px}#sc i{justify-self:center;width:min(12px,70%);aspect-ratio:1;border-radius:50%;background:currentColor}
+#sc i.x{transform:scale(.22);opacity:.3}#sc i.y{transform:scale(1.9);background:var(--paper)}
 /* зона 9 */
-.opt{font:800 clamp(34px,7vw,110px)/1 var(--live);font-variation-settings:'wdth' 85;text-transform:uppercase;letter-spacing:-.03em;border:1px solid currentColor;border-radius:99px;padding:.18em .5em}
+.opt{font:800 clamp(34px,7vw,110px)/1 var(--live);font-variation-settings:'wdth' 85;letter-spacing:-.03em;border:1px solid currentColor;border-radius:99px;padding:.18em .5em}
 .opt:hover,.opt.sel{background:var(--paper);border-color:var(--paper);color:var(--blue)}
 .bar{display:flex;align-items:center;gap:16px;margin:3vh 0}.bar .mono{width:14em;flex:none}.bar i{display:block;height:12px;background:currentColor}.bar.au i{background:var(--paper);opacity:.5}.bar em{font:500 .8rem var(--clk);font-style:normal;white-space:nowrap}
 .mc{flex:1;text-align:left;border:1px solid currentColor;padding:16px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
-.mc b{font:700 clamp(18px,2vw,28px)/1 var(--live);text-transform:uppercase}.mc em{font:italic 400 1.2rem/1.1 var(--mem)}
-.mc.pick{background:var(--paper);border-color:var(--paper);color:var(--blue)}.mc.pick b{font-size:clamp(34px,6vw,90px)}.mc.pick em{font-size:clamp(22px,3vw,44px)}
+.mc b{font:700 clamp(18px,2vw,28px)/1 var(--live)}.mc em{font:400 1.05rem/1.3 var(--mem);font-style:normal}
+.mc.pick{background:var(--paper);border-color:var(--paper);color:var(--blue)}.mc.pick b{font-size:clamp(34px,6vw,90px)}.mc.pick em{font-size:clamp(20px,2.4vw,32px)}
 .sumrow{display:grid;grid-template-columns:14em 1fr;gap:20px;padding:16px 0;border-top:1px solid currentColor;align-items:baseline}
-.sumrow b{font:600 clamp(18px,2.4vw,32px)/1.15 var(--live);text-transform:uppercase;letter-spacing:-.01em}.sumrow b.ph{border:0}
+.sumrow b{font:600 clamp(18px,2.4vw,32px)/1.15 var(--live);letter-spacing:-.01em}
 .words{margin:6vh 0 5vh;display:grid;gap:6px}
-.words .a{font:800 clamp(44px,10vw,160px)/.95 var(--live);font-variation-settings:'wdth' 90;text-transform:uppercase;letter-spacing:-.03em}
+.words .a{font:800 clamp(44px,10vw,160px)/.95 var(--live);font-variation-settings:'wdth' 90;letter-spacing:-.03em}
 .words .b{font:400 clamp(38px,8vw,128px)/1 var(--clk);letter-spacing:-.06em}
 .words .c{font:italic 400 clamp(46px,10vw,160px)/1 var(--mem);font-variation-settings:'opsz' 72}
 /* подвал */
 .foot ol,.foot dl,.foot ul{margin-top:12px;padding:0;list-style:none}.src li{font-size:.9rem;margin-bottom:12px;max-width:34em}
-.foot dt{font:500 .68rem var(--clk);text-transform:uppercase;color:var(--mu);margin-top:12px}.foot dd{font-size:.92rem;margin:2px 0 0;max-width:30em}
+.foot dt{font:600 1rem var(--live);color:var(--mu);margin-top:12px}.foot dd{font-size:.92rem;margin:2px 0 0;max-width:30em}
 .log li{padding:8px 0;border-bottom:1px solid rgba(21,21,19,.2);font-size:.92rem;max-width:44em}
+
+/* ПЕРЕЛОМ: модель забывания */
+.turn{padding-top:18vh;padding-bottom:18vh}
+.turn__p{font:400 clamp(20px,1.9vw,26px)/1.5 var(--mem);max-width:30em;margin:3vh 0 4vh}
+/* ЗОНА 4: день теми же положениями */
+.d4{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:5vw;align-items:center;height:100%}
+.d4__r,.d4r{position:relative;height:min(76svh,620px)}
+.d4r{max-width:36em;margin:5vh 0}
+.axis{position:absolute;left:calc(5rem + 22.5px);top:0;bottom:0;width:1px;background:currentColor;opacity:.45}
+.ev4{position:absolute;left:0;right:0;display:flex;align-items:center;gap:16px;transform:translateY(-50%);text-align:left;color:inherit}
+.ev4 time{font:500 .9rem var(--clk);width:5rem;flex:none}
+.ev4 i{width:13px;height:13px;border-radius:50%;border:1.5px solid currentColor;flex:none;background:var(--pb,var(--paper));position:relative;z-index:1}
+.ev4 span{font:600 clamp(16px,1.6vw,21px)/1.1 var(--live)}
+.d4__r .ev4.k i{background:var(--dc,var(--blue));border-color:var(--dc,var(--blue))}
+.rcb{cursor:pointer;padding:0}.rcb[disabled]{cursor:default}
+.rcb.sel i{background:var(--fg)}.rcb.mdl i{box-shadow:0 0 0 5px rgba(23,64,184,.28);border-color:var(--blue)}
+.rcb:hover span{text-decoration:underline;text-underline-offset:4px}
+#rcres{margin-top:3vh}
+
+/* подзаголовок: название колонки или блока */
+.sub{font:600 1.15rem/1.3 var(--live);letter-spacing:0;display:block}
+.rh__c{position:absolute;left:0;top:calc(100% + 10px);font:400 1rem var(--mem);color:var(--mu);white-space:nowrap}
+
+/* ЗОНА 5: опыт «десять секунд» на бумаге, на языке линии и точек, как день в зонах 3–4 */
+.stage{margin:6vh 0 7vh;position:relative}
+.st-steps{display:flex;justify-content:space-between;gap:12px;position:relative;margin-bottom:7vh}
+.st-steps::before{content:'';position:absolute;left:7px;right:0;top:7px;height:1px;background:currentColor;opacity:.35}
+.st-steps li{position:relative;flex:1;min-width:0;padding-top:28px;font:400 1rem/1.3 var(--mem);color:var(--mu);transition:color .4s}
+.st-steps li::before{content:'';position:absolute;left:0;top:0;width:15px;height:15px;border-radius:50%;border:1.5px solid currentColor;background:var(--paper);transition:background .4s,border-color .4s}
+.st-steps li.on{color:var(--fg)}.st-steps li.on::before{background:var(--k);border-color:var(--k)}
+.st-body{min-height:min(44vh,380px)}
+#st-dots{position:relative;height:min(30vh,240px);margin:3vh 0;border-top:1px solid currentColor;border-bottom:1px solid currentColor}
+#st-dots button{position:absolute;width:40px;height:40px;margin:-20px;border-radius:50%;background:var(--k)}
+.pulse{width:15px;height:15px;border-radius:50%;background:var(--k);margin-bottom:3vh}
+/* зона 4: заметка читаема на любом фоне */
+.d4__note{color:inherit;opacity:.9}
+/* первая зона: слова поворота и шаги времени */
+.anc{color:var(--k);font-weight:600}
+body[data-surf=i]{--hb:var(--ink)}body[data-surf=b]{--hb:var(--blue)}
+
+/* зона 6: два условных дня на одной вертикали, как в зонах 3–4 */
+.day .q{font-size:clamp(22px,2.6vw,34px);margin-top:1.2vh}
+.mini{position:relative;height:min(46svh,340px);margin:3vh 0 2vh}
+.mini .end{position:absolute;left:0;font:500 .8rem var(--clk);opacity:.65}
+.mini .ev4 i{background:var(--k);border-color:var(--k);transform:scale(0);transition:transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--dl,0s)}
+.mini .ev4 time{opacity:0;transition:opacity .7s;transition-delay:var(--dl,0s)}
+.f.in .mini .ev4 i{transform:none}.f.in .mini .ev4 time{opacity:1}
+
+/* вступление: смещение фразы вправо = более длинный промежуток */
+.st{margin-left:var(--off,0)}
+.intro .intro__axis{margin:0 0 4vh}
+/* шкалы: деления совпадают с главной шкалой (час — длинный штрих, четверть часа — короткий) */
+.day3{--ax:102px;--tw:78px}
+.day3 .tick{transform:translateY(-.5px);position:absolute;left:calc(var(--ax) - 6px);width:13px;height:1px;background:currentColor;opacity:clamp(0,calc((var(--p,0)*1.3 - var(--at,0))*10),.55)}
+.day3 .tick.qt{left:calc(var(--ax) - 3px);width:7px}
+.axis .tick{position:absolute;left:-6px;width:13px;height:1px;background:currentColor;transform:translateY(-.5px)}
+.axis .tick.qt{left:-3px;width:7px}
+.now{position:absolute;left:0;right:0;height:0;border-top:1px solid var(--k);opacity:.5;pointer-events:none;z-index:0;display:none}
+.now time{position:absolute;right:0;top:-.85em;font:500 .85rem var(--clk);color:var(--k);background:var(--paper);padding:0 6px}
+.ev3.cur span{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
+/* плавные границы между поверхностями: цвет предыдущей зоны перетекает в новую */
+.from-p,.from-i,.from-b{isolation:isolate}
+.from-p::before,.from-i::before,.from-b::before{content:'';position:absolute;left:0;right:0;top:0;height:22vh;z-index:-1;pointer-events:none}
+.from-p::before{background:linear-gradient(var(--paper),transparent)}
+.from-i::before{background:linear-gradient(var(--ink),transparent)}
+.from-b::before{background:linear-gradient(var(--blue),transparent)}
+.sumrow{animation:fsIn .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0)*170ms)}
+
+.ev3 time{width:var(--tw,78px)}
