@@ -1,8 +1,15 @@
-/* Шрифты Google подключены ссылками в index.html (все три с лицензией SIL OFL).
-   Свои шрифты: положите файлы в src/fonts и добавьте @font-face, например:
-   @font-face{font-family:'Literata';src:url('../fonts/Literata.woff2') format('woff2');font-display:swap} */
+/* ОДИН ШРИФТ: Geist (SIL OFL), переменный, веса 100–900, подключён одной ссылкой в index.html.
+   Выразительность даёт контраст насыщенности и масштаба: гигантские 900 и сверхтонкие 200 рядом с мелкими метками (приём «единого штриха» и масштабного жеста по лекции 1.4).
+   ЧЁРНО-БЕЛАЯ ПАЛИТРА: бумага и чернила. Выразительность даёт масштаб, насыщенность шрифта, тонкие линии и угасание, а не цвет. */
 :root{
-  --live:'Roboto Flex',Arial,sans-serif;   /* переживание: заголовки */
-  --mem:'Literata',Georgia,serif;          /* память: вопросы и текст */
-  --clk:'Martian Mono',monospace;          /* часы: только измеренное */
+  --sans:'Geist','Inter',Arial,sans-serif;                       /* заголовки, текст, названия, числа */
+  --serif:'Cormorant','Cormorant Garamond',Georgia,serif;          /* только речь: вопросы, реплики (курсив, один акцент) */
+  --paper:#F1F1EE;--ink:#0B0B0B;--graphite:#555553;
+  --fs-tag:.8125rem;--fs-cap:1rem;--fs-text:1.125rem;
+  --fs-lead:clamp(1.25rem,1.8vw,1.5rem);
+  --fs-speech:clamp(1.75rem,3.6vw,3.25rem);
+  --fs-title:clamp(2.5rem,7.5vw,7.5rem);
+  --fs-hero:clamp(3.5rem,13vw,13rem);
+  --fs-display:clamp(5rem,26vw,26rem);
+  --u:.5rem;--g1:1rem;--g2:3rem;--g3:clamp(4rem,12vh,8rem);--m:5vw;--measure:64ch;
 }
