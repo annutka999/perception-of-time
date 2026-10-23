@@ -38,7 +38,8 @@ window.T && window.T.mods.push('scroll');
     draws.forEach(function (e) { var r = e.getBoundingClientRect(); e.style.setProperty('--p', cl((H * .9 - r.top) / (r.height + H * .3))); });
     // шкала дня: линия чтения показывает время суток там, где вы читаете
     var dr = d3.getBoundingClientRect();
-    if (dr.bottom > 0 && dr.top < H) { var yy = cl((H * .5 - dr.top) / dr.height), yt = cl((yy * 100 - 2) / 96), mm = Math.round(492 + yt * 939); nw.style.display = 'block'; nw.style.top = (yy * 100) + '%'; nw.firstChild.textContent = $('#rdo').textContent = T.pad(Math.floor(mm / 60)) + ':' + T.pad(mm % 60); }
+    if (dr.bottom > 0 && dr.top < H) { var yy = cl((H * .5 - dr.top) / dr.height), yt = cl((yy * 100 - 2) / 96), mm = Math.round(492 + yt * 939); nw.style.display = 'block'; nw.style.top = (yy * 100) + '%'; nw.firstChild.textContent = $('#rdo').textContent = T.pad(Math.floor(mm / 60)) + ':' + T.pad(mm % 60);
+    }
     else nw.style.display = 'none';
     // поворот: слова абзаца таят по мере прокрутки
     var tpr = $('#turnp').getBoundingClientRect(), tpg = cl((H * .6 - tpr.top) / (H * .8)), nwd = T.turnWords.length;
@@ -54,7 +55,7 @@ window.T && window.T.mods.push('scroll');
       else n.style.opacity = Math.max(0, 1 - .9 * f - r);
     });
     rl4.style.opacity = 1 - r; $('#d4n').textContent = Math.round(5 + 6 * (1 - f));
-    cap.textContent = T.nb(r > .02 ? 'А теперь память собирает день заново: точки придвигаются друг к другу. Расстояния больше не измеряют время, остаётся только порядок.' : f > .25 ? 'Пройдёт неделя, и от дня останется меньше: пять точек остаются, остальные гаснут. Места на линии прежние.' : 'Тот же день. Сверху вниз идут часы: от 08:12 до 23:51.');
+    cap.textContent = T.nb(r > .02 ? 'А теперь память собирает день заново: точки придвигаются друг к другу. Расстояния больше не измеряют время, остаётся только порядок.' : f > .25 ? 'Это те события, которые человек смог вспомнить. Места на линии прежние, остальные погасли.' : 'Спустя 7 дней был задан вопрос: что вы помните о том дне, какие события тогда происходили?');
   }
   segb.forEach(function (b) { b.onclick = function () { step = +b.dataset.s; segb.forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); onS(); }; });
   // возврат: нажать можно только на уже прочитанную зону

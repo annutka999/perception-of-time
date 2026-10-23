@@ -4,7 +4,10 @@ window.T && window.T.mods.push('experiment');
   var T = window.T, S = T.S, $ = function (s) { return document.querySelector(s); }, $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
   var mode = 'wait', t1 = 0, cnt = 0, views = $$('.st-v'), box = $('#st-dots');
   var f = function (v) { return v.toFixed(1).replace('.', ','); };
-  function go(i) { views.forEach(function (v) { v.classList.toggle('on', +v.dataset.s === i); }); }
+  var A1 = $('#att-a'), A2 = $('#att-b');
+  function marks() { A1.classList.toggle('on', mode === 'wait' && !done1() || (S.ex === null)); A2.classList.toggle('on', S.ex !== null && S.ex2 === null); A1.classList.toggle('done', S.ex !== null); A2.classList.toggle('done', S.ex2 !== null); $('#att1').textContent = S.ex !== null ? f(S.ex) + ' с' : '—'; $('#att2').textContent = S.ex2 !== null ? f(S.ex2) + ' с' : '—'; }
+  function done1() { return S.ex !== null; }
+  function go(i) { views.forEach(function (v) { v.classList.toggle('on', +v.dataset.s === i); }); $('#st').classList.toggle('run', i === 1); marks(); }
   function spawn() { box.innerHTML = ''; var b = document.createElement('button'); b.setAttribute('aria-label', 'Нажмите на точку'); b.style.left = (8 + Math.random() * 84) + '%'; b.style.top = (12 + Math.random() * 76) + '%'; b.onclick = function () { cnt++; spawn(); }; box.appendChild(b); }
   function start(m) {
     mode = m; t1 = performance.now(); cnt = 0;

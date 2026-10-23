@@ -36,7 +36,7 @@ window.T && window.T.mods.push('sections');
     m.innerHTML = h;
   });
   // зона 6: «Пусть пройдёт неделя» убирает переживание дня, остаются эпизоды памяти
-  $('#wk').onclick = function () { var on = $('#wk').getAttribute('aria-pressed') !== 'true'; $('#wk').setAttribute('aria-pressed', on); $('#wk').textContent = on ? 'Вернуть день' : 'Пусть пройдёт неделя'; $('#days').classList.toggle('week', on); };
+  $('#wk').onclick = function () { var on = $('#wk').getAttribute('aria-pressed') !== 'true'; $('#wk').setAttribute('aria-pressed', on); $('#wk').textContent = on ? 'Вернуть день' : 'Пусть пройдёт неделя'; $('#days').classList.toggle('week', on); $('#wk-s').textContent = on ? 'Прошла неделя: от дня А осталось 2 эпизода, от дня Б 9.' : 'Что останется от каждого дня?'; };
   // зона 7: масштаб меняется только по выбору читателя; подпись печатается
   var ord = []; for (var i = 0; i < 60; i++) ord.push(i); ord.sort(function () { return Math.random() - .5; });
   var SC = [[18, 'День: много событий. Кофе, письмо, дорога, разговор: почти всё доступно.'], [7, 'Неделя: несколько опорных событий. Встреча, новость, поездка.'], [4, 'Месяц: несколько узлов. Важный разговор, праздник.'], [2, 'Год: несколько воспоминаний. Переезд, лето, начало чего-то нового.']];

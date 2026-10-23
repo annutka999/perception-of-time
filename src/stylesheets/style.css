@@ -15,7 +15,7 @@ h2{font-weight:800;font-size:var(--fs-title);line-height:.95;letter-spacing:-.03
 p{max-width:var(--measure)}p+p{margin-top:var(--g1)}
 .lead{font-size:var(--fs-lead);line-height:1.5;max-width:44ch}
 .q{font-family:var(--serif);font-style:italic;font-weight:300;font-size:calc(var(--fs-speech)*1.05);line-height:1.1;letter-spacing:-.01em;max-width:26ch}
-.q.sm{font-size:calc(var(--fs-lead)*1.15);font-weight:400}.q.xl{font-size:calc(var(--fs-speech)*1.55);line-height:1;letter-spacing:-.015em;max-width:20ch}
+.q.sm{font-size:calc(var(--fs-lead)*1.15);font-weight:400}.q.xl{font-size:calc(var(--fs-speech)*1.25);line-height:1;letter-spacing:-.015em;max-width:20ch}
 .strap{font-weight:400;font-size:var(--fs-lead);line-height:1.3;letter-spacing:-.01em;max-width:34ch}
 .cap{font-size:var(--fs-cap);line-height:1.5;color:var(--mu)}
 .tn,time,.num{font-variant-numeric:tabular-nums}
@@ -28,7 +28,7 @@ a{color:inherit;text-decoration:underline;text-underline-offset:.2em;text-decora
 :focus-visible{outline:2px solid currentColor;outline-offset:3px}
 .btn{font-size:1rem;background:var(--fg);color:var(--bg);padding:.9rem 1.5rem;border-radius:99px;margin:.4rem .5rem .4rem 0;min-height:44px;letter-spacing:-.01em}
 .btn.o{background:none;color:inherit;border:1px solid currentColor}
-.opt{font-size:var(--fs-speech);line-height:1;letter-spacing:-.04em;border:1px solid currentColor;border-radius:99px;padding:.5em 1em;min-height:44px}
+.opt{font-size:var(--fs-lead);line-height:1;letter-spacing:-.04em;border:1px solid currentColor;border-radius:99px;padding:.5em 1em;min-height:44px}
 .opt{max-width:100%}
 .opt:hover,.opt.sel{background:var(--fg);color:var(--bg)}
 .skip{position:fixed;left:.5rem;top:-4.5rem;z-index:120;background:var(--ink);color:var(--paper);padding:.8rem 1.1rem;border-radius:99px;font-weight:600}.skip:focus{top:.5rem}
@@ -80,7 +80,7 @@ a{color:inherit;text-decoration:underline;text-underline-offset:.2em;text-decora
 .seg button[aria-pressed=true]{background:var(--fg);color:var(--bg)}
 /* зона 5 */
 .stage{margin:var(--g2) 0 var(--g3)}
-.st-v{display:none;min-height:min(40vh,340px)}.st-v.on{display:block}
+.st-v{display:none}.st-v.on{display:block}
 .st-v .q{margin:0 0 var(--g1)}
 #st-dots{position:relative;height:min(30vh,240px);margin:var(--g1) 0;border-top:1px solid currentColor;border-bottom:1px solid currentColor}
 #st-dots button{position:absolute;width:44px;height:44px;margin:-22px;border-radius:50%;background:var(--fg)}
@@ -113,7 +113,7 @@ a{color:inherit;text-decoration:underline;text-underline-offset:.2em;text-decora
 .fs{display:none;margin-top:var(--g2)}.fs.on{display:block}
 .opts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:var(--g2)}
 .three{margin:var(--g2) 0}.three>div{border-top:1px solid currentColor;padding:1.5rem 0 var(--g2)}
-.three .q{font-family:var(--sans);font-style:normal;font-size:var(--fs-title);max-width:none;margin:0;font-weight:800;letter-spacing:-.035em;line-height:.95}
+.three .q{font-family:var(--sans);font-style:normal;font-size:var(--fs-speech);max-width:none;margin:0;font-weight:700;letter-spacing:-.02em;line-height:1.05}
 .three .v{font-weight:200;font-size:clamp(3.5rem,11vw,10rem);line-height:.9;letter-spacing:-.06em;margin:var(--g1) 0 .5rem;font-variant-numeric:tabular-nums}
 .three p{margin:0}
 /* подвал */
@@ -178,3 +178,20 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:30;opa
 .num.md{font-size:clamp(5rem,16vw,14rem)}
 .scl{display:flex;align-items:baseline;gap:1.5rem;margin-top:var(--g1)}
 .rng{width:100%;height:3.2rem;accent-color:currentColor;margin-top:var(--g1)}.rngl{display:flex;justify-content:space-between;font-weight:600;font-size:var(--fs-cap);padding:0 .4rem}
+
+/* опыт «десять секунд»: во время измерения экран меняется, две попытки видны всегда */
+.att{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:var(--g2);border:1px solid currentColor}
+.att li{display:grid;grid-template-columns:auto 1fr;gap:.2rem .75rem;align-items:baseline;padding:.9rem 1rem;position:relative}
+.att li+li{border-left:1px solid currentColor}
+.att .n{grid-row:span 2;font-size:var(--fs-title);font-weight:200;line-height:.8}
+.att b{font-size:var(--fs-lead);font-weight:600;min-height:1.4em}
+.att li.on{box-shadow:inset 0 -5px 0 currentColor}
+.att li.done b::after{content:' ✓'}
+/* нажатые переключатели видно: закрашенная кнопка становится контурной */
+.btn[aria-pressed=true]{background:transparent;color:inherit;box-shadow:inset 0 0 0 2px currentColor}
+
+
+/* опыт: во время измерения виден статус (без инверсии экрана и без ритмичного мигания: оно подсказывало бы время) */
+.st-live{font-weight:600;font-size:var(--fs-lead);display:flex;align-items:center;gap:.7rem;margin-bottom:var(--g1)}
+.st-live::before{content:'';width:.8rem;height:.8rem;border-radius:50%;background:currentColor;flex:none}
+.stage.run .att{border-width:2px}
