@@ -1,198 +1,743 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Всё быстрее — интерактивное эссе о времени</title>
-<meta name="description" content="Почему один и тот же период может тянуться в переживании и сжиматься в воспоминании. Эссе, в котором вы сами становитесь участником небольшого опыта.">
-<meta name="theme-color" content="#EEEBE3">
-<meta property="og:title" content="Всё быстрее — интерактивное эссе о времени"><meta property="og:description" content="Почему один и тот же период может тянуться в переживании и сжиматься в воспоминании."><meta property="og:type" content="article">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231740B8'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23EEEBE3'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@200;300;400;600;700;800;900&family=Cormorant:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="src/stylesheets/reset.css?v=37">
-<link rel="stylesheet" href="src/stylesheets/fonts.css?v=37">
-<link rel="stylesheet" href="src/stylesheets/style.css?v=37">
-<link rel="stylesheet" href="src/stylesheets/layout.css?v=37">
-<link rel="stylesheet" href="src/stylesheets/adaptive.css?v=37">
-<link rel="stylesheet" href="src/stylesheets/animation.css?v=37"></head>
-<body data-surf="p">
-<a class="skip" href="#main">К основному тексту</a>
-<noscript><p style="padding:1.5rem;max-width:none">Для этой публикации нужен JavaScript.</p></noscript>
-<nav id="rail" aria-label="Зоны: возврат к прочитанному"><button class="b" disabled aria-label="Вернуться к зоне 1: Вход"><span class="nm" aria-hidden="true">Вход</span><i aria-hidden="true"></i></button><button class="b" disabled aria-label="Вернуться к зоне 2: Ночь"><span class="nm" aria-hidden="true">Ночь</span><i aria-hidden="true"></i></button><button class="b" disabled aria-label="Вернуться к зоне 3: День"><span class="nm" aria-hidden="true">День</span><i aria-hidden="true"></i></button><button class="b" disabled aria-label="Вернуться к зоне 4: Неделя"><span class="nm" aria-hidden="true">Неделя</span><i aria-hidden="true"></i></button><button class="b" disabled aria-label="Вернуться к зоне 5: Опыт"><span class="nm" aria-hidden="true">Опыт</span><i aria-hidden="true"></i></button><button class="b" disabled aria-label="Вернуться к зоне 6: Насыщенность"><span class="nm" aria-hidden="true">Насыщенность</span><i aria-hidden="true"></i></button><button class="b" disabled aria-label="Вернуться к зоне 7: Масштаб"><span class="nm" aria-hidden="true">Масштаб</span><i aria-hidden="true"></i></button><button class="b" disabled aria-label="Вернуться к зоне 8: Возраст"><span class="nm" aria-hidden="true">Возраст</span><i aria-hidden="true"></i></button><button class="b" disabled aria-label="Вернуться к зоне 9: Финал"><span class="nm" aria-hidden="true">Финал</span><i aria-hidden="true"></i></button></nav>
-<p class="sr" id="prog-sr">Прочитано зон: 0 из 9</p>
-<aside id="tnote" class="tnote" role="status" hidden><button class="x" aria-label="Закрыть">×</button><p class="tn big" id="tnote-t"></p><p id="tnote-p"></p></aside>
-<main id="main" tabindex="-1">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Всё быстрее — интерактивное эссе о времени</title>
+    <meta
+      name="description"
+      content="Почему один и тот же период может тянуться в переживании и сжиматься в воспоминании. Эссе, в котором вы сами становитесь участником небольшого опыта."
+    />
+    <meta name="theme-color" content="#EEEBE3" />
+    <meta
+      property="og:title"
+      content="Всё быстрее — интерактивное эссе о времени"
+    />
+    <meta
+      property="og:description"
+      content="Почему один и тот же период может тянуться в переживании и сжиматься в воспоминании."
+    />
+    <meta property="og:type" content="article" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231740B8'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23EEEBE3'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@200;300;400;600;700;800;900&family=Cormorant:ital,wght@1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/stylesheets/reset.css?v=37" />
+    <link rel="stylesheet" href="src/stylesheets/fonts.css?v=37" />
+    <link rel="stylesheet" href="src/stylesheets/style.css?v=37" />
+    <link rel="stylesheet" href="src/stylesheets/layout.css?v=37" />
+    <link rel="stylesheet" href="src/stylesheets/adaptive.css?v=37" />
+    <link rel="stylesheet" href="src/stylesheets/animation.css?v=37" />
+  </head>
+  <body data-surf="p">
+    <a class="skip" href="#main">К основному тексту</a>
+    <noscript
+      ><p style="padding: 1.5rem; max-width: none">
+        Для этой публикации нужен JavaScript.
+      </p></noscript
+    >
+    <nav id="rail" aria-label="Зоны: возврат к прочитанному">
+      <button class="b" disabled aria-label="Вернуться к зоне 1: Вход">
+        <span class="nm" aria-hidden="true">Вход</span
+        ><i aria-hidden="true"></i></button
+      ><button class="b" disabled aria-label="Вернуться к зоне 2: Ночь">
+        <span class="nm" aria-hidden="true">Ночь</span
+        ><i aria-hidden="true"></i></button
+      ><button class="b" disabled aria-label="Вернуться к зоне 3: День">
+        <span class="nm" aria-hidden="true">День</span
+        ><i aria-hidden="true"></i></button
+      ><button class="b" disabled aria-label="Вернуться к зоне 4: Неделя">
+        <span class="nm" aria-hidden="true">Неделя</span
+        ><i aria-hidden="true"></i></button
+      ><button class="b" disabled aria-label="Вернуться к зоне 5: Опыт">
+        <span class="nm" aria-hidden="true">Опыт</span
+        ><i aria-hidden="true"></i></button
+      ><button class="b" disabled aria-label="Вернуться к зоне 6: Насыщенность">
+        <span class="nm" aria-hidden="true">Насыщенность</span
+        ><i aria-hidden="true"></i></button
+      ><button class="b" disabled aria-label="Вернуться к зоне 7: Масштаб">
+        <span class="nm" aria-hidden="true">Масштаб</span
+        ><i aria-hidden="true"></i></button
+      ><button class="b" disabled aria-label="Вернуться к зоне 8: Возраст">
+        <span class="nm" aria-hidden="true">Возраст</span
+        ><i aria-hidden="true"></i></button
+      ><button class="b" disabled aria-label="Вернуться к зоне 9: Финал">
+        <span class="nm" aria-hidden="true">Финал</span
+        ><i aria-hidden="true"></i>
+      </button>
+    </nav>
+    <p class="sr" id="prog-sr">Прочитано зон: 0 из 9</p>
+    <aside id="tnote" class="tnote" role="status" hidden>
+      <button class="x" aria-label="Закрыть">×</button>
+      <p class="tn big" id="tnote-t"></p>
+      <p id="tnote-p"></p>
+    </aside>
+    <main id="main" tabindex="-1">
+      <!-- ЗОНА 1 · ВХОД: поставить вопрос и дать читателю таймер, который потом исчезнет -->
+      <section id="z1" class="hero si" data-z="1">
+        <div class="hero__in" id="heroin">
+          <p class="cap">У вас пять минут, чтобы прочитать.</p>
+          <p class="timer tn" id="timer" aria-hidden="true">05:00</p>
+          <div class="bar" aria-hidden="true"><i id="timerbar"></i></div>
+          <h1>Всё быстрее</h1>
+          <h2 class="strap">
+            Различие между проживаемым временем и временем в памяти
+          </h2>
+        </div>
+      </section>
+      <!-- вступление: сколько прокрутки занимает фраза, столько она «длится» -->
+      <section id="intro" class="stagewrap si" data-z="1">
+        <div class="pin">
+          <div class="ph" id="ph1">
+            <p class="q xl">Иногда пять минут кажутся вечностью.</p>
+          </div>
+          <div class="ph" id="ph2">
+            <p class="q xl">Иногда несколько часов исчезают почти незаметно.</p>
+          </div>
+          <div class="ph" id="ph3">
+            <p class="q xl">
+              <span class="dim"
+                >А спустя неделю целый день может сжаться до</span
+              >
+              нескольких воспоминаний.
+            </p>
+          </div>
+          <div class="ph" id="ph4">
+            <p class="q xl">
+              Как один и тот же промежуток может быть одновременно длинным и
+              коротким?
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="s turn si" id="turn" data-z="1">
+        <p class="q xl">
+          Дальше страница будет убирать из виду то, что вы уже прочитали.
+        </p>
+        <p class="lead" id="turnp">
+          Так работает <b>модель забывания</b>: прочитанное расплывается,
+          остаются только <b>опорные места</b>. Это ещё не значит, что вы что-то
+          забыли. Об этом мы <b>спросим Вас позже</b>.
+        </p>
+      </section>
 
-<!-- ЗОНА 1 · ВХОД: поставить вопрос и дать читателю таймер, который потом исчезнет -->
-<section id="z1" class="hero si" data-z="1">
-  <div class="hero__in" id="heroin">
-    <p class="cap">У вас пять минут, чтобы прочитать.</p>
-    <p class="timer tn" id="timer" aria-hidden="true">05:00</p>
-    <div class="bar" aria-hidden="true"><i id="timerbar"></i></div>
-    <h1>Всё быстрее</h1>
-    <h2 class="strap">Различие между проживаемым временем и временем в памяти</h2>
-  </div>
-</section>
-<!-- вступление: сколько прокрутки занимает фраза, столько она «длится» -->
-<section id="intro" class="stagewrap si" data-z="1"><div class="pin">
-  <div class="ph" id="ph1"><p class="q xl">Иногда пять минут кажутся вечностью.</p></div>
-  <div class="ph" id="ph2"><p class="q xl">Иногда несколько часов исчезают почти незаметно.</p></div>
-  <div class="ph" id="ph3"><p class="q xl"><span class="dim">А спустя неделю целый день может сжаться до</span> нескольких воспоминаний.</p></div>
-  <div class="ph" id="ph4"><p class="q xl">Как один и тот же промежуток может быть одновременно длинным и коротким?</p></div>
-</div></section>
-<section class="s turn si" id="turn" data-z="1">
-  <p class="q xl">Дальше страница будет убирать из виду то, что вы уже прочитали.</p>
-  <p class="lead" id="turnp">Так работает <b>модель забывания</b>: прочитанное расплывается, остаются только <b>опорные места</b>. Это ещё не значит, что вы что-то забыли. Об этом мы <b>спросим Вас позже</b>.</p>
-</section>
+      <!-- ЗОНА 2 · ПОКАЗАТЬ ЧАСЫ И ОЩУЩЕНИЕ РЯДОМ -->
+      <div id="z2" class="zone si night" data-z="2">
+        <div class="pin">
+          <div class="nz">
+            <div class="nz__clock">
+              <canvas
+                id="nc"
+                role="img"
+                aria-label="Циферблат: светлая дуга показывает, сколько прошло по часам, вторая, пунктир, как это ощущалось"
+              ></canvas>
+              <p class="cap">
+                Сплошная дуга — реальное время, пунктир — ощущение.
+              </p>
+            </div>
+            <div class="nz__text">
+              <h2>Один и тот же час —<br />бессонная ночь</h2>
+              <div class="nt">
+                <div>
+                  <span class="cap">По часам</span><time id="nrr">00:17</time>
+                </div>
+                <div>
+                  <span class="cap">Как ощущалось</span
+                  ><time id="nrf">00:17</time>
+                </div>
+              </div>
+              <p class="q" id="nq"></p>
+              <p class="cap live-only">Моменты пробуждения и взгляда на часы</p>
+              <ol class="chips" id="n5"></ol>
+              <ol class="night-list" id="nl"></ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="nend si" data-z="2">
+        <p class="q f">
+          Часы всё это время идут с одной скоростью. Но наше ощущение времени —
+          нет.
+        </p>
+        <p class="q f">
+          Один час прошёл для героя. А сколько времени прошло для вас?
+        </p>
+      </section>
 
-<!-- ЗОНА 2 · ПОКАЗАТЬ ЧАСЫ И ОЩУЩЕНИЕ РЯДОМ -->
-<div id="z2" class="zone si night" data-z="2"><div class="pin">
-  <div class="nz">
-    <div class="nz__clock"><canvas id="nc" role="img" aria-label="Циферблат: светлая дуга показывает, сколько прошло по часам, вторая, пунктир, как это ощущалось"></canvas>
-      <p class="cap">Сплошная дуга — реальное время, пунктир — ощущение.</p></div>
-    <div class="nz__text">
-      <h2>Один и тот же час —<br>бессонная ночь</h2>
-      <div class="nt"><div><span class="cap">По часам</span><time id="nrr">00:17</time></div><div><span class="cap">Как ощущалось</span><time id="nrf">00:17</time></div></div>
-      <p class="q" id="nq"></p>
-      <p class="cap live-only">Моменты пробуждения и взгляда на часы</p>
-      <ol class="chips" id="n5"></ol>
-      <ol class="night-list" id="nl"></ol>
-    </div>
-  </div>
-</div></div>
-<section class="nend si" data-z="2">
-  <p class="q f">Часы всё это время идут с одной скоростью. Но наше ощущение времени — нет.</p>
-  <p class="q f">Один час прошёл для героя. А сколько времени прошло для вас?</p>
-</section>
+      <!-- ЗОНА 3 · МАТЕРИАЛ: один день на вертикали, положение = время по часам -->
+      <section id="z3" class="s sp" data-z="3">
+        <header class="chap">
+          <h2 class="f">Один день можно<br />записать по минутам</h2>
+        </header>
+        <p class="f" id="daynote" style="margin-top: var(--g1)"></p>
+        <div class="z3g">
+          <div class="tl tl--long" id="day3" data-draw></div>
+          <div class="readout" aria-hidden="true">
+            <span class="tn" id="rdo">08:12</span
+            ><span class="cap">время суток там, где вы читаете</span>
+          </div>
+        </div>
+      </section>
 
-<!-- ЗОНА 3 · МАТЕРИАЛ: один день на вертикали, положение = время по часам -->
-<section id="z3" class="s sp" data-z="3">
-  <header class="chap"><h2 class="f">Один день можно<br>записать по минутам</h2></header>
-  <p class="f" id="daynote" style="margin-top:var(--g1)"></p>
-  <div class="z3g"><div class="tl tl--long" id="day3" data-draw></div><div class="readout" aria-hidden="true"><span class="tn" id="rdo">08:12</span><span class="cap">время суток там, где вы читаете</span></div></div>
-</section>
+      <!-- ЗОНА 4 · ТОТ ЖЕ ДЕНЬ ЧЕРЕЗ НЕДЕЛЮ: те же положения, исчезновение на месте, затем «пересборка» -->
+      <div id="z4" class="zone" data-z="4">
+        <div class="pin sp" id="z4pin">
+          <div class="d4">
+            <div class="d4__l">
+              <h2>Тот же день —<br />через неделю</h2>
+              <p id="d4cap" style="margin-top: var(--g1); color: inherit"></p>
+              <div class="d4n" aria-hidden="true">
+                <span class="tn" id="d4n">11</span
+                ><span class="cap" style="color: inherit"
+                  >событий остаётся</span
+                >
+              </div>
+              <div class="seg" id="seg" role="group" aria-label="Состояние дня">
+                <button data-s="0" aria-pressed="true">Записанный день</button
+                ><button data-s="1" aria-pressed="false">Через неделю</button
+                ><button data-s="2" aria-pressed="false">Пересборка</button>
+              </div>
+            </div>
+            <div
+              class="d4__r tl tl--pin"
+              id="day4"
+              role="img"
+              aria-label="Тот же день: одиннадцать событий; через неделю остаются пять"
+            ></div>
+          </div>
+        </div>
+      </div>
 
-<!-- ЗОНА 4 · ТОТ ЖЕ ДЕНЬ ЧЕРЕЗ НЕДЕЛЮ: те же положения, исчезновение на месте, затем «пересборка» -->
-<div id="z4" class="zone" data-z="4"><div class="pin sp" id="z4pin">
-  <div class="d4">
-    <div class="d4__l"><h2>Тот же день —<br>через неделю</h2><p id="d4cap" style="margin-top:var(--g1);color:inherit"></p><div class="d4n" aria-hidden="true"><span class="tn" id="d4n">11</span><span class="cap" style="color:inherit">событий остаётся</span></div>
-      <div class="seg" id="seg" role="group" aria-label="Состояние дня"><button data-s="0" aria-pressed="true">Записанный день</button><button data-s="1" aria-pressed="false">Через неделю</button><button data-s="2" aria-pressed="false">Пересборка</button></div></div>
-    <div class="d4__r tl tl--pin" id="day4" role="img" aria-label="Тот же день: одиннадцать событий; через неделю остаются пять"></div>
-  </div>
-</div></div>
+      <!-- ЗОНА 5 · ОПЫТ: десять секунд; объяснение появляется после действия -->
+      <section id="z5" class="s sp" data-z="5">
+        <header class="chap"><h2 class="f">Десять секунд</h2></header>
+        <div class="stage" id="st">
+          <ol class="att" aria-label="Две попытки">
+            <li class="on" id="att-a">
+              <span class="n tn">1</span><span>Следите за временем</span
+              ><b class="tn" id="att1">—</b>
+            </li>
+            <li id="att-b">
+              <span class="n tn">2</span><span>Займитесь делом</span
+              ><b class="tn" id="att2">—</b>
+            </li>
+          </ol>
+          <div class="st-v on" data-s="0">
+            <p>
+              Не считайте вслух и не смотрите на часы. Нажмите «Начать», а
+              когда, по ощущению, пройдёт десять секунд, нажмите «Стоп».
+            </p>
+            <button class="btn" data-a="start-wait">Начать</button>
+          </div>
+          <div class="st-v" data-s="1">
+            <p class="st-live">Идёт измерение</p>
+            <p id="st-act"></p>
+            <div id="st-dots"></div>
+            <button class="btn" data-a="stop">Стоп</button>
+          </div>
+          <div class="st-v" data-s="2">
+            <p class="cap">Между нажатиями прошло</p>
+            <div class="num" id="st-val">—</div>
+            <div class="scale" aria-hidden="true">
+              <span class="mk real" style="left: 50%"><em>10 с</em></span
+              ><span class="mk you" id="st-you"><em></em></span
+              ><span class="mk you2" id="st-you2"><em></em></span>
+            </div>
+            <p class="cap" id="st-res"></p>
+            <button class="btn" data-a="start-busy" id="st-busy2">
+              Вторая попытка: займитесь делом →</button
+            ><button class="btn o" data-a="explain">Что мы сравнили?</button
+            ><button class="btn o" data-a="again">Ещё раз</button>
+          </div>
+          <div class="st-v" data-s="3">
+            <p class="lead" id="st-ex"></p>
+            <button class="btn" data-a="start-busy" id="st-busy">
+              Вторая попытка: займитесь делом →</button
+            ><button class="btn o" data-a="down">Почему так ↓</button>
+          </div>
+        </div>
+        <h2 class="f" id="expl-h">Почему так?</h2>
+        <div class="tabs f" role="group" aria-label="Два вида оценки">
+          <button class="btn" data-t="0" aria-pressed="true">В моменте</button
+          ><button class="btn o" data-t="1" aria-pressed="false">Потом</button>
+        </div>
+        <p
+          class="lead f"
+          id="tabtxt"
+          style="margin-top: var(--g1); min-height: 6.5em"
+        ></p>
+        <div class="gloss f">
+          <div>
+            <span class="sub">Словарь</span>
+            <p>
+              <b>Проспективная оценка</b> — оценка длительности, когда вы
+              заранее знаете, что нужно следить за временем.
+            </p>
+          </div>
+          <div>
+            <span class="sub">Словарь</span>
+            <p>
+              <b>Ретроспективная оценка</b> — оценка длительности, о которой вас
+              спрашивают уже после события.
+            </p>
+          </div>
+        </div>
+        <div class="has-note f">
+          <p>
+            В метаанализе 20 экспериментов Ричард Блок и Дан Закей (1997)
+            <a class="cit" href="#src1">[1]</a> показали: оценки «в моменте» и
+            ретроспективные связаны с разными когнитивными процессами. Для
+            первых важно внимание к времени, для вторых — процессы, связанные с
+            памятью. Похожее различие между переживающим и вспоминающим «я»
+            описывал Даниэль Канеман <a class="cit" href="#src4">[4]</a>.
+          </p>
+          <aside class="note">
+            Опыт лишь показывает вывод Блока и Закея, а не доказывает его. Вы
+            оценивали время сразу, а в случае с графиком дня — лишь
+            рассматривали его, поэтому эти два случая нельзя сравнивать.
+          </aside>
+        </div>
+      </section>
 
-<!-- ЗОНА 5 · ОПЫТ: десять секунд; объяснение появляется после действия -->
-<section id="z5" class="s sp" data-z="5">
-  <header class="chap"><h2 class="f">Десять секунд</h2></header>
-  <div class="stage" id="st">
-    <ol class="att" aria-label="Две попытки"><li class="on" id="att-a"><span class="n tn">1</span><span>Следите за временем</span><b class="tn" id="att1">—</b></li><li id="att-b"><span class="n tn">2</span><span>Займитесь делом</span><b class="tn" id="att2">—</b></li></ol>
-    <div class="st-v on" data-s="0"><p>Не считайте вслух и не смотрите на часы. Нажмите «Начать», а когда, по ощущению, пройдёт десять секунд, нажмите «Стоп».</p><button class="btn" data-a="start-wait">Начать</button></div>
-    <div class="st-v" data-s="1"><p class="st-live">Идёт измерение</p><p id="st-act"></p><div id="st-dots"></div><button class="btn" data-a="stop">Стоп</button></div>
-    <div class="st-v" data-s="2"><p class="cap">Между нажатиями прошло</p><div class="num" id="st-val">—</div>
-      <div class="scale" aria-hidden="true"><span class="mk real" style="left:50%"><em>10 с</em></span><span class="mk you" id="st-you"><em></em></span><span class="mk you2" id="st-you2"><em></em></span></div>
-      <p class="cap" id="st-res"></p><button class="btn" data-a="start-busy" id="st-busy2">Вторая попытка: займитесь делом →</button><button class="btn o" data-a="explain">Что мы сравнили?</button><button class="btn o" data-a="again">Ещё раз</button></div>
-    <div class="st-v" data-s="3"><p class="lead" id="st-ex"></p><button class="btn" data-a="start-busy" id="st-busy">Вторая попытка: займитесь делом →</button><button class="btn o" data-a="down">Почему так ↓</button></div>
-  </div>
-  <h2 class="f" id="expl-h">Почему так?</h2>
-  <div class="tabs f" role="group" aria-label="Два вида оценки"><button class="btn" data-t="0" aria-pressed="true">В моменте</button><button class="btn o" data-t="1" aria-pressed="false">Потом</button></div>
-  <p class="lead f" id="tabtxt" style="margin-top:var(--g1);min-height:6.5em"></p>
-  <div class="gloss f"><div><span class="sub">Словарь</span><p><b>Проспективная оценка</b> — оценка длительности, когда вы заранее знаете, что нужно следить за временем.</p></div><div><span class="sub">Словарь</span><p><b>Ретроспективная оценка</b> — оценка длительности, о которой вас спрашивают уже после события.</p></div></div>
-  <div class="has-note f"><p>В метаанализе 20 экспериментов Ричард Блок и Дан Закей (1997) <a class="cit" href="#src1">[1]</a> показали: оценки «в моменте» и ретроспективные связаны с разными когнитивными процессами. Для первых важно внимание к времени, для вторых — процессы, связанные с памятью. Похожее различие между переживающим и вспоминающим «я» описывал Даниэль Канеман <a class="cit" href="#src4">[4]</a>.</p><aside class="note">Опыт лишь показывает вывод Блока и Закея, а не доказывает его. Вы оценивали время сразу, а в случае с графиком дня — лишь рассматривали его, поэтому эти два случая нельзя сравнивать.</aside></div>
-</section>
+      <!-- ЗОНА 6 · СОПОСТАВИТЬ: два дня на одной вертикали -->
+      <section id="z6" class="s sp" data-z="6">
+        <header class="chap">
+          <h2 class="f">А что, если время<br />было насыщенным?</h2>
+        </header>
+        <p class="q f" style="margin-top: var(--g2)">
+          Но что произойдёт, если само переживание времени было разным?
+        </p>
+        <p class="f" style="margin-top: var(--g1)">
+          Возьмём два условных дня одной длины, с 08:00 до 20:00. Время идёт
+          сверху вниз, а каждая точка — эпизод, который остался в памяти.
+        </p>
+        <div style="margin-top: var(--g2)">
+          <button class="btn" id="wk" aria-pressed="false">
+            Пусть пройдёт неделя</button
+          ><span class="cap" id="wk-s">Что останется от каждого дня?</span>
+        </div>
+        <div class="days" id="days">
+          <div class="day f" data-draw>
+            <span class="sub">День А · ожидание</span>
+            <div class="num">2</div>
+            <p class="cap">эпизода остались в памяти</p>
+            <p class="q">«Это длится вечность».</p>
+            <div
+              class="mini tl"
+              data-d="A"
+              role="img"
+              aria-label="День А: два эпизода в памяти"
+            ></div>
+            <p>Потом: почти нечего вспомнить.</p>
+          </div>
+          <div class="day si f" data-draw>
+            <span class="sub">День Б · насыщенность событиями</span>
+            <div class="num">9</div>
+            <p class="cap">эпизодов остались в памяти</p>
+            <p class="q">«Как уже вечер?»</p>
+            <div
+              class="mini tl"
+              data-d="B"
+              role="img"
+              aria-label="День Б: девять эпизодов в памяти"
+            ></div>
+            <p>Потом: много отдельных эпизодов.</p>
+          </div>
+        </div>
+        <p class="lead f" style="margin-top: var(--g2)">
+          Быстрое время в моменте не обязательно оставляет короткое
+          воспоминание, а медленное — длинное. Ощущение сейчас и воспоминание
+          потом зависят от разных процессов.
+        </p>
+      </section>
 
-<!-- ЗОНА 6 · СОПОСТАВИТЬ: два дня на одной вертикали -->
-<section id="z6" class="s sp" data-z="6">
-  <header class="chap"><h2 class="f">А что, если время<br>было насыщенным?</h2></header>
-  <p class="q f" style="margin-top:var(--g2)">Но что произойдёт, если само переживание времени было разным?</p>
-  <p class="f" style="margin-top:var(--g1)">Возьмём два условных дня одной длины, с 08:00 до 20:00. Время идёт сверху вниз, а каждая точка — эпизод, который остался в памяти.</p>
-  <div style="margin-top:var(--g2)"><button class="btn" id="wk" aria-pressed="false">Пусть пройдёт неделя</button><span class="cap" id="wk-s">Что останется от каждого дня?</span></div>
-  <div class="days" id="days">
-    <div class="day f" data-draw><span class="sub">День А · ожидание</span>
-      <div class="num">2</div><p class="cap">эпизода остались в памяти</p>
-      <p class="q">«Это длится вечность».</p>
-      <div class="mini tl" data-d="A" role="img" aria-label="День А: два эпизода в памяти"></div>
-      <p>Потом: почти нечего вспомнить.</p></div>
-    <div class="day si f" data-draw><span class="sub">День Б · насыщенность событиями</span>
-      <div class="num">9</div><p class="cap">эпизодов остались в памяти</p>
-      <p class="q">«Как уже вечер?»</p>
-      <div class="mini tl" data-d="B" role="img" aria-label="День Б: девять эпизодов в памяти"></div>
-      <p>Потом: много отдельных эпизодов.</p></div>
-  </div>
-  <p class="lead f" style="margin-top:var(--g2)">Быстрое время в моменте не обязательно оставляет короткое воспоминание, а медленное — длинное. Ощущение сейчас и воспоминание потом зависят от разных процессов.</p>
-</section>
+      <!-- ЗОНА 7 · УВЕЛИЧИТЬ МАСШТАБ: читатель сам выбирает промежуток -->
+      <section id="z7" class="s sb" data-z="7">
+        <header class="chap">
+          <h2 class="f">Увеличиваем<br />масштаб</h2>
+        </header>
+        <p class="q f" style="margin-top: var(--g2)">
+          А если рассматривать всё более крупные промежутки?
+        </p>
+        <p style="margin-top: var(--g1)">
+          Каждая точка — одно событие периода. Двигайте ползунок.
+        </p>
+        <div class="scl">
+          <div class="num md" id="scn">18</div>
+          <span class="cap">из 60 событий остаётся</span>
+        </div>
+        <input
+          id="scr"
+          class="rng"
+          type="range"
+          min="1"
+          max="4"
+          step="1"
+          value="1"
+          aria-label="Масштаб: день, неделя, месяц, год"
+        />
+        <div class="rngl" aria-hidden="true">
+          <span>День</span><span>Неделя</span><span>Месяц</span><span>Год</span>
+        </div>
+        <div id="sc" aria-hidden="true"></div>
+        <p
+          class="lead"
+          id="sct"
+          style="margin-top: var(--g1); min-height: 3.4em"
+        ></p>
+        <p class="lead f" style="margin-top: var(--g2)">
+          Чем больше промежуток, тем сильнее мы представляем его через отдельные
+          опорные события: поездку, встречу, переезд, праздник, начало чего-то
+          нового. Год уже невозможно восстановить минуту за минутой: мы собираем
+          его из того, что осталось доступным.
+        </p>
+      </section>
 
-<!-- ЗОНА 7 · УВЕЛИЧИТЬ МАСШТАБ: читатель сам выбирает промежуток -->
-<section id="z7" class="s sb" data-z="7">
-  <header class="chap"><h2 class="f">Увеличиваем<br>масштаб</h2></header>
-  <p class="q f" style="margin-top:var(--g2)">А если рассматривать всё более крупные промежутки?</p>
-  <p style="margin-top:var(--g1)">Каждая точка — одно событие периода. Двигайте ползунок.</p>
-  <div class="scl"><div class="num md" id="scn">18</div><span class="cap">из 60 событий остаётся</span></div>
-  <input id="scr" class="rng" type="range" min="1" max="4" step="1" value="1" aria-label="Масштаб: день, неделя, месяц, год">
-  <div class="rngl" aria-hidden="true"><span>День</span><span>Неделя</span><span>Месяц</span><span>Год</span></div>
-  <div id="sc" aria-hidden="true"></div><p class="lead" id="sct" style="margin-top:var(--g1);min-height:3.4em"></p>
-  <p class="lead f" style="margin-top:var(--g2)">Чем больше промежуток, тем сильнее мы представляем его через отдельные опорные события: поездку, встречу, переезд, праздник, начало чего-то нового. Год уже невозможно восстановить минуту за минутой: мы собираем его из того, что осталось доступным.</p>
-</section>
+      <!-- ЗОНА 8 · ПОСЛЕДСТВИЕ: сам год не одинаков для всех -->
+      <section id="z8" class="s sp" data-z="8">
+        <header class="chap">
+          <h2 class="f">Один год —<br />разная часть жизни</h2>
+        </header>
+        <p class="q f" style="margin-top: var(--g2)">
+          А всегда ли год одинаково велик?
+        </p>
+        <p class="f" style="margin-top: var(--g1)">
+          Для семилетнего ребёнка год — седьмая часть всей жизни. Для
+          шестидесятилетнего человека — шестидесятая. Ниже две жизни, разбитые
+          на годы: последний год закрашен. Нажимайте на любой год.
+        </p>
+        <div class="life" id="life7">
+          <span class="sub">7 лет</span>
+          <div
+            class="yrs"
+            id="y7"
+            role="group"
+            aria-label="Годы жизни семилетнего"
+          ></div>
+        </div>
+        <div class="life" id="life60">
+          <span class="sub">60 лет</span>
+          <div
+            class="yrs"
+            id="y60"
+            role="group"
+            aria-label="Годы жизни шестидесятилетнего"
+          ></div>
+        </div>
+        <p class="lead" id="life-t">
+          Нажмите на год, чтобы увидеть, что от него остаётся в памяти.
+        </p>
+        <button class="btn" id="life-m" aria-pressed="false">
+          Показать, что остаётся в памяти
+        </button>
+        <p class="cap">
+          Яркость года на схеме условна. Она опирается на то, что у взрослых
+          больше всего воспоминаний приходится на возраст 10–30 лет
+          <a class="cit" href="#src6">[6]</a>.
+        </p>
+        <p class="f" style="margin-top: var(--g2)">
+          Эту идею в 1877 году предложил французский философ Поль Жане
+          <a class="cit" href="#src5">[5]</a>: чем больше прожито, тем короче
+          кажется каждый новый год. Но пропорция — лишь одно из объяснений.
+        </p>
+        <div class="has-note f">
+          <p>
+            В исследовании 120 участников от 20 до 91 года оценивали, как быстро
+            прошли последние десять лет. Старшие в среднем воспринимали этот
+            период как более быстрый. Количество и субъективная значимость
+            воспоминаний сами по себе разницу не объясняли. Нашлась связь с тем,
+            как хорошо человек запоминает новую информацию (Teghil et al., 2026)
+            <a class="cit" href="#src2">[2]</a>.
+          </p>
+          <aside class="note">
+            Исследование поперечное: оно показывает связь, а не причину. У
+            ощущения «с возрастом время летит быстрее» нет одной простой
+            причины.
+          </aside>
+        </div>
+      </section>
 
-<!-- ЗОНА 8 · ПОСЛЕДСТВИЕ: сам год не одинаков для всех -->
-<section id="z8" class="s sp" data-z="8">
-  <header class="chap"><h2 class="f">Один год —<br>разная часть жизни</h2></header>
-  <p class="q f" style="margin-top:var(--g2)">А всегда ли год одинаково велик?</p>
-  <p class="f" style="margin-top:var(--g1)">Для семилетнего ребёнка год — седьмая часть всей жизни. Для шестидесятилетнего человека — шестидесятая. Ниже две жизни, разбитые на годы: последний год закрашен. Нажимайте на любой год.</p>
-  <div class="life" id="life7"><span class="sub">7 лет</span><div class="yrs" id="y7" role="group" aria-label="Годы жизни семилетнего"></div></div>
-  <div class="life" id="life60"><span class="sub">60 лет</span><div class="yrs" id="y60" role="group" aria-label="Годы жизни шестидесятилетнего"></div></div>
-  <p class="lead" id="life-t">Нажмите на год, чтобы увидеть, что от него остаётся в памяти.</p>
-  <button class="btn" id="life-m" aria-pressed="false">Показать, что остаётся в памяти</button>
-  <p class="cap">Яркость года на схеме условна. Она опирается на то, что у взрослых больше всего воспоминаний приходится на возраст 10–30 лет <a class="cit" href="#src6">[6]</a>.</p>
-  <p class="f" style="margin-top:var(--g2)">Эту идею в 1877 году предложил французский философ Поль Жане <a class="cit" href="#src5">[5]</a>: чем больше прожито, тем короче кажется каждый новый год. Но пропорция — лишь одно из объяснений.</p>
-  <div class="has-note f"><p>В исследовании 120 участников от 20 до 91 года оценивали, как быстро прошли последние десять лет. Старшие в среднем воспринимали этот период как более быстрый. Количество и субъективная значимость воспоминаний сами по себе разницу не объясняли. Нашлась связь с тем, как хорошо человек запоминает новую информацию (Teghil et al., 2026) <a class="cit" href="#src2">[2]</a>.</p><aside class="note">Исследование поперечное: оно показывает связь, а не причину. У ощущения «с возрастом время летит быстрее» нет одной простой причины.</aside></div>
-</section>
+      <!-- ЗОНА 9 · ЗАВЕРШИТЬ: возвращение к таймеру из первого экрана, три времени, вывод -->
+      <section id="z9" class="s si fin" data-z="9">
+        <div class="fs on" id="s1">
+          <p class="lead">
+            Мы начали с таймера на пять минут. Потом вы его не видели.
+          </p>
+          <p class="q xl" style="margin-top: var(--g1)">
+            Как вам кажется, сколько вы читали эту страницу?
+          </p>
+          <div class="opts">
+            <button class="opt" data-v="3">Меньше пяти минут</button
+            ><button class="opt" data-v="5">Около пяти минут</button
+            ><button class="opt" data-v="8">Больше пяти минут</button>
+          </div>
+        </div>
+        <div class="fs" id="s2">
+          <p class="cap">Страница была открыта</p>
+          <div class="num" id="real"></div>
+          <p class="q" id="s2-cmp" style="margin-top: var(--g1)"></p>
+          <p style="margin-top: var(--g1)" id="s2-why"></p>
+          <p class="cap" style="margin-top: var(--g1)">
+            Как мы считали: время шло с загрузки страницы, замирало, пока
+            вкладка была скрыта, и остановилось, когда вы ответили. Это не
+            точная мера внимания, только время, пока страница была перед вами.
+          </p>
+          <button class="btn" data-go="s3" style="margin-top: var(--g1)">
+            Дальше
+          </button>
+        </div>
+        <div class="fs" id="s3">
+          <h2>Какое именно время?</h2>
+          <p class="lead" style="margin-top: var(--g1)">
+            На вопрос «сколько прошло времени?» у вас теперь три ответа, и они
+            не обязаны совпадать.
+          </p>
+          <div class="three" id="three"></div>
+          <h2
+            style="
+              margin-top: var(--g3);
+              font-size: calc(var(--fs-title) * 0.6);
+            "
+          >
+            След вашего чтения
+          </h2>
+          <p class="cap" style="margin-top: var(--g1)">
+            Сколько секунд вы провели в каждой зоне: это время по часам. Что из
+            него осталось в памяти, знаете только вы. Нажмите на строку, чтобы
+            вернуться в эту зону.
+          </p>
+          <div class="trace-map" id="trace"></div>
+          <p class="lead">
+            Время не имеет одной субъективной длительности. Как долго оно
+            тянется сейчас и каким долгим остаётся потом, зависит от разных
+            процессов: внимания к ходу времени, того, чем заполнен период, и
+            того, что сохранилось в памяти.
+          </p>
+          <p class="q" style="margin-top: var(--g2)">
+            Возможно, когда нам кажется, что время ускорилось, мы сравниваем не
+            одну скорость — а разные способы его переживать и вспоминать.
+          </p>
+          <p class="cap" style="margin-top: var(--g2)">
+            Вы — тоже часть этой истории.
+          </p>
+        </div>
+      </section>
 
-<!-- ЗОНА 9 · ЗАВЕРШИТЬ: возвращение к таймеру из первого экрана, три времени, вывод -->
-<section id="z9" class="s si fin" data-z="9">
-  <div class="fs on" id="s1"><p class="lead">Мы начали с таймера на пять минут. Потом вы его не видели.</p>
-    <p class="q xl" style="margin-top:var(--g1)">Как вам кажется, сколько вы читали эту страницу?</p>
-    <div class="opts"><button class="opt" data-v="3">Меньше пяти минут</button><button class="opt" data-v="5">Около пяти минут</button><button class="opt" data-v="8">Больше пяти минут</button></div></div>
-  <div class="fs" id="s2"><p class="cap">Страница была открыта</p><div class="num" id="real"></div>
-    <p class="q" id="s2-cmp" style="margin-top:var(--g1)"></p>
-    <p style="margin-top:var(--g1)" id="s2-why"></p>
-    <p class="cap" style="margin-top:var(--g1)">Как мы считали: время шло с загрузки страницы, замирало, пока вкладка была скрыта, и остановилось, когда вы ответили. Это не точная мера внимания, только время, пока страница была перед вами.</p>
-    <button class="btn" data-go="s3" style="margin-top:var(--g1)">Дальше</button></div>
-  <div class="fs" id="s3"><h2>Какое именно время?</h2>
-    <p class="lead" style="margin-top:var(--g1)">На вопрос «сколько прошло времени?» у вас теперь три ответа, и они не обязаны совпадать.</p>
-    <div class="three" id="three"></div>
-    <h2 style="margin-top:var(--g3);font-size:calc(var(--fs-title)*.6)">След вашего чтения</h2>
-    <p class="cap" style="margin-top:var(--g1)">Сколько секунд вы провели в каждой зоне: это время по часам. Что из него осталось в памяти, знаете только вы. Нажмите на строку, чтобы вернуться в эту зону.</p>
-    <div class="trace-map" id="trace"></div>
-    <p class="lead">Время не имеет одной субъективной длительности. Как долго оно тянется сейчас и каким долгим остаётся потом, зависит от разных процессов: внимания к ходу времени, того, чем заполнен период, и того, что сохранилось в памяти.</p>
-    <p class="q" style="margin-top:var(--g2)">Возможно, когда нам кажется, что время ускорилось, мы сравниваем не одну скорость — а разные способы его переживать и вспоминать.</p>
-    <p class="cap" style="margin-top:var(--g2)">Вы — тоже часть этой истории.</p></div>
-</section>
-
-<!-- ПОДВАЛ -->
-<footer class="foot si" data-z="9">
-<div id="ring" class="ring" hidden><div><span class="sub">Предыдущая работа</span><a id="ringp" href="#" target="_blank" rel="noopener"></a></div><div><span class="sub">Следующая работа</span><a id="ringn" href="#" target="_blank" rel="noopener"></a><p id="ringw"></p></div></div>
-<h2 class="foot__h">Как это сделано</h2>
-<div class="fcols">
-<div><span class="sub">Источники</span><ol class="src">
-<li id="src1">Block R. A., Zakay D. (1997). Prospective and retrospective duration judgments: a meta-analytic review. Psychonomic Bulletin &amp; Review, 4(2), 184–197. <a href="https://doi.org/10.3758/BF03209393" target="_blank" rel="noopener">Проверить: статья по DOI ↗</a></li>
-<li id="src2">Teghil A., Wittmann S., Lifrieri A., Saad S., Boccia M., Wittmann M. (2026). Memory encoding for new information, not autobiographical memory load, is linked with age-related differences in subjective time passage over the past decade. Memory &amp; Cognition, 54(6), 2394–2408. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13461740/" target="_blank" rel="noopener">Проверить: исследование целиком, открытый доступ ↗</a></li>
-<li id="src3">Сварник О. (2026). «Память — не архив: как мозг заново собирает наш опыт». ПостНаука, 29 июня 2026. <a href="https://postnauka.org/talks/158088" target="_blank" rel="noopener">Углубить: материал на ПостНауке ↗</a></li>
-<li id="src4">Kahneman D. (2010). The riddle of experience vs. memory. <a href="https://www.ted.com/talks/daniel_kahneman_the_riddle_of_experience_vs_memory" target="_blank" rel="noopener">Углубить: выступление на TED ↗</a></li>
-<li id="src5">Janet P. (1877). Une illusion d’optique interne. Revue philosophique de la France et de l’étranger, 3, 497–502. <a href="https://www.jstor.org/stable/41071670" target="_blank" rel="noopener">Проверить: страница журнала на JSTOR ↗</a></li>
-<li id="src6">Rubin D. C., Rahhal T. A., Poon L. W. (1998). Things learned in early adulthood are remembered best. Memory &amp; Cognition, 26(1), 3–19. <a href="https://doi.org/10.3758/BF03211366" target="_blank" rel="noopener">Проверить: статья по DOI ↗</a></li></ol></div>
-<div><span class="sub">Материалы и права</span><dl><dt>Шрифты</dt><dd>Geist и Cormorant (Google Fonts), лицензия SIL OFL</dd><dt>Изображения</dt><dd>Изображений на странице нет: вся графика — линии, точки и числа, нарисованные кодом.</dd><dt>Участие ИИ</dt><dd>Код и вёрстку написал ИИ (Claude, Anthropic) по заданиям автора. Тема, тезис, исходные тексты, источники и решения принадлежат автору.</dd><dt>Данные читателя</dt><dd>Ответы и время не отправляются на сервер и исчезают при обновлении страницы.</dd></dl></div></div>
-<p style="margin-top:var(--g2)"><button class="btn o" id="again9">Пройти заново ↑</button><span class="cap">сбросит ваши замеры</span></p>
-<div class="endline"><span>КОСМАЧЁВА АННА</span><span>АВТОРСКОЕ ИНТЕРАКТИВНОЕ ЭССЕ</span></div></footer>
-</main>
-<script src="src/javascripts/data.js?v=37" defer></script>
-<script src="src/javascripts/typo.js?v=37" defer></script>
-<script src="src/javascripts/session.js?v=37" defer></script>
-<script src="src/javascripts/graphics.js?v=37" defer></script>
-<script src="src/javascripts/sections.js?v=37" defer></script>
-<script src="src/javascripts/scroll.js?v=37" defer></script>
-<script src="src/javascripts/experiment.js?v=37" defer></script>
-<script src="src/javascripts/finale.js?v=37" defer></script>
-<script src="src/javascripts/shade.js?v=37" defer></script>
-</body>
+      <!-- ПОДВАЛ -->
+      <footer class="foot si" data-z="9">
+        <div id="ring" class="ring" hidden>
+          <div>
+            <span class="sub">Предыдущая работа</span
+            ><a id="ringp" href="#" target="_blank" rel="noopener"></a>
+          </div>
+          <div>
+            <span class="sub">Следующая работа</span
+            ><a id="ringn" href="#" target="_blank" rel="noopener"></a>
+            <p id="ringw"></p>
+          </div>
+        </div>
+        <h2 class="foot__h">Как это сделано</h2>
+        <div class="fcols">
+          <div>
+            <span class="sub">Источники</span>
+            <ol class="src">
+              <li id="src1">
+                Block R. A., Zakay D. (1997). Prospective and retrospective
+                duration judgments: a meta-analytic review. Psychonomic Bulletin
+                &amp; Review, 4(2), 184–197.
+                <a
+                  href="https://doi.org/10.3758/BF03209393"
+                  target="_blank"
+                  rel="noopener"
+                  >Проверить: статья по DOI ↗</a
+                >
+              </li>
+              <li id="src2">
+                Teghil A., Wittmann S., Lifrieri A., Saad S., Boccia M.,
+                Wittmann M. (2026). Memory encoding for new information, not
+                autobiographical memory load, is linked with age-related
+                differences in subjective time passage over the past decade.
+                Memory &amp; Cognition, 54(6), 2394–2408.
+                <a
+                  href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13461740/"
+                  target="_blank"
+                  rel="noopener"
+                  >Проверить: исследование целиком, открытый доступ ↗</a
+                >
+              </li>
+              <li id="src3">
+                Сварник О. (2026). «Память — не архив: как мозг заново собирает
+                наш опыт». ПостНаука, 29 июня 2026.
+                <a
+                  href="https://postnauka.org/talks/158088"
+                  target="_blank"
+                  rel="noopener"
+                  >Углубить: материал на ПостНауке ↗</a
+                >
+              </li>
+              <li id="src4">
+                Kahneman D. (2010). The riddle of experience vs. memory.
+                <a
+                  href="https://www.ted.com/talks/daniel_kahneman_the_riddle_of_experience_vs_memory"
+                  target="_blank"
+                  rel="noopener"
+                  >Углубить: выступление на TED ↗</a
+                >
+              </li>
+              <li id="src5">
+                Janet P. (1877). Une illusion d’optique interne. Revue
+                philosophique de la France et de l’étranger, 3, 497–502.
+                <a
+                  href="https://www.jstor.org/stable/41071670"
+                  target="_blank"
+                  rel="noopener"
+                  >Проверить: страница журнала на JSTOR ↗</a
+                >
+              </li>
+              <li id="src6">
+                Rubin D. C., Rahhal T. A., Poon L. W. (1998). Things learned in
+                early adulthood are remembered best. Memory &amp; Cognition,
+                26(1), 3–19.
+                <a
+                  href="https://doi.org/10.3758/BF03211366"
+                  target="_blank"
+                  rel="noopener"
+                  >Проверить: статья по DOI ↗</a
+                >
+              </li>
+            </ol>
+          </div>
+          <div>
+            <span class="sub">Материалы и права</span>
+            <dl>
+              <dt>Шрифты</dt>
+              <dd>Geist и Cormorant (Google Fonts), лицензия SIL OFL</dd>
+              <dt>Изображения</dt>
+              <dd>
+                Изображений на странице нет: вся графика — линии, точки и числа,
+                нарисованные кодом.
+              </dd>
+              <dt>Участие ИИ</dt>
+              <dd>
+                Код и вёрстку написал ИИ (Claude, Anthropic) по заданиям автора.
+                Тема, тезис, исходные тексты, источники и решения принадлежат
+                автору.
+              </dd>
+              <dt>Данные читателя</dt>
+              <dd>
+                Ответы и время не отправляются на сервер и исчезают при
+                обновлении страницы.
+              </dd>
+            </dl>
+          </div>
+        </div>
+        <p style="margin-top: var(--g2)">
+          <button class="btn o" id="again9">Пройти заново ↑</button
+          ><span class="cap">сбросит ваши замеры</span>
+        </p>
+        <div class="endline">
+          <span>КОСМАЧЁВА АННА</span><span>АВТОРСКОЕ ИНТЕРАКТИВНОЕ ЭССЕ</span>
+        </div>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+        />
+        <style>
+          .course-webring {
+            margin-top: 64px;
+            padding: 24px 0;
+            border-top: 1px solid currentColor;
+            font-family: Inter, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+          }
+          .course-webring h2 {
+            margin: 0 0 16px;
+            font-family: Inter, sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.3;
+          }
+          .course-webring__nav {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+            gap: 12px 24px;
+            align-items: start;
+          }
+          .course-webring__nav a {
+            display: flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 10px 0;
+            box-sizing: border-box;
+            color: inherit;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            overflow-wrap: anywhere;
+          }
+          .course-webring__nav a:last-child {
+            justify-content: flex-end;
+            text-align: right;
+          }
+          .course-webring__nav a:focus-visible {
+            outline: 2px solid currentColor;
+            outline-offset: 4px;
+          }
+          .course-webring--entry .course-webring__nav {
+            grid-template-columns: 1fr 1fr;
+          }
+          @media (max-width: 720px) {
+            .course-webring__nav,
+            .course-webring--entry .course-webring__nav {
+              grid-template-columns: 1fr;
+            }
+            .course-webring__nav a:last-child {
+              justify-content: flex-start;
+              text-align: left;
+            }
+          }
+        </style>
+        <footer class="course-webring">
+          <h2>Веб-ринг</h2>
+          <nav class="course-webring__nav" aria-label="Веб-ринг проектов">
+            <a
+              target="_top"
+              href="https://svetylekkk.github.io/longriddd/"
+              rel="prev"
+              >← В ожидании тишины — Светлана Сафронова</a
+            >
+            <a
+              target="_top"
+              href="https://docs.google.com/spreadsheets/d/1moFgJsWmO2xyTYsfRRvhG63S1ru9MhJKDSAw2pOUqyw/htmlview?gid=93859566&amp;range=A1:E35"
+              >Все проекты</a
+            >
+            <a
+              target="_top"
+              href="https://iammariadrach-max.github.io/-WhoOwnsThePause/"
+              rel="next"
+              >Кому принадлежит пауза — Мария Драч →</a
+            >
+          </nav>
+        </footer>
+      </footer>
+    </main>
+    <script src="src/javascripts/data.js?v=37" defer></script>
+    <script src="src/javascripts/typo.js?v=37" defer></script>
+    <script src="src/javascripts/session.js?v=37" defer></script>
+    <script src="src/javascripts/graphics.js?v=37" defer></script>
+    <script src="src/javascripts/sections.js?v=37" defer></script>
+    <script src="src/javascripts/scroll.js?v=37" defer></script>
+    <script src="src/javascripts/experiment.js?v=37" defer></script>
+    <script src="src/javascripts/finale.js?v=37" defer></script>
+    <script src="src/javascripts/shade.js?v=37" defer></script>
+  </body>
 </html>
