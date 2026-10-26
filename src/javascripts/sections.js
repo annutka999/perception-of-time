@@ -22,21 +22,17 @@ window.T && window.T.mods.push('sections');
   var t4 = function (y) { return y * 92 + 4; }, ai = 0;
   ruler($('#day4'), t4, 15);
   $('#day4').insertAdjacentHTML('beforeend', T.E.map(function (e) { return ev(e, t4, ' data-a="' + (e[2] ? ai++ : -1) + '"'); }).join(''));
-  // веб-ринг: показывается, только когда заданы обе соседние работы
-  if (T.RING.prev && T.RING.next) { $('#ring').hidden = false; $('#ringp').textContent = T.RING.prev.title + ' ←'; $('#ringp').href = T.RING.prev.url; $('#ringn').textContent = '→ ' + T.RING.next.title; $('#ringn').href = T.RING.next.url; $('#ringw').textContent = T.nb(T.RING.next.why || ''); }
-  // зона 6: два условных дня на одной вертикали (08:00–20:00); точка — эпизод, оставшийся в памяти
-  $$('.mini').forEach(function (m) {
-    var top = function (t) { return (t - 480) / 720 * 92 + 4; }, h = '<div class="rl"><div class="axis"></div>';
-    for (var hh = 480; hh <= 1200; hh += 60) h += '<i class="tick hr" style="top:' + top(hh).toFixed(2) + '%"></i><span class="hl tn" style="top:' + top(hh).toFixed(2) + '%">' + T.pad(hh / 60) + ':00</span>';
-    h += '</div>';
-    // как день переживался: плотность делений (в дне А почти пустые минуты ожидания, в дне Б заполненные), через неделю они исчезают
-    for (var sl = 0; sl < 72; sl++) { var l = m.dataset.d === 'A' ? 5 + (sl * 7 % 4) * 2 : 16 + ((sl * 13) % 7) * 6; h += '<i class="bt" style="top:' + top(480 + sl * 10).toFixed(2) + '%;--l:' + l + 'px"></i>'; }
-    // день А: эпизоды появляются редко и поздно, день Б: часто и сразу (появление привязано к прокрутке панели)
-    T.DAYS[m.dataset.d].forEach(function (t, i) { var at = m.dataset.d === 'A' ? [.3, .75][i] : .2 + i * .05; h += '<div class="ev" style="top:' + top(T.sec(t)).toFixed(2) + '%;--at:' + at + '"><i class="cn"></i><i class="dot"></i><time>' + t + '</time></div>'; });
+  // зона 6: два условных дня на одной шкале 08:00–20:00. Сначала день как он переживался (плотность делений: в дне А почти пустые минуты ожидания, в дне Б заполненные), через неделю остаются эпизоды памяти
+  $$('.sx').forEach(function (m) {
+    var y = function (min) { return ((min - 480) / 720 * 92 + 4).toFixed(2) + '%'; }, A = m.dataset.d === 'A', h = '<i class="ax"></i>';
+    for (var hh = 480; hh <= 1200; hh += 120) h += '<i class="hr" style="top:' + y(hh) + '"></i><span class="hl2 tn" style="top:' + y(hh) + '">' + T.pad(hh / 60) + ':00</span>';
+    for (var sl = 0; sl < 72; sl++) { var w = A ? 10 + (sl * 7 % 4) * 6 : 60 + ((sl * 13) % 7) * 22; h += '<i class="bt" style="top:' + y(480 + sl * 10) + ';width:' + w + 'px"></i>'; }
+    T.DAYS[m.dataset.d].forEach(function (t) { var mn = T.sec(t); h += '<i class="ep" style="top:' + y(mn) + '"></i><span class="et tn" style="top:' + y(mn) + '">' + t + '</span>'; });
     m.innerHTML = h;
   });
-  // зона 6: «Пусть пройдёт неделя» убирает переживание дня, остаются эпизоды памяти
-  $('#wk').onclick = function () { var on = $('#wk').getAttribute('aria-pressed') !== 'true'; $('#wk').setAttribute('aria-pressed', on); $('#wk').textContent = on ? 'Вернуть день' : 'Пусть пройдёт неделя'; $('#days').classList.toggle('week', on); $('#wk-s').textContent = on ? 'Прошла неделя: от дня А осталось 2 эпизода, от дня Б 9.' : 'Что останется от каждого дня?'; };
+  // зона 6: «Пусть пройдёт неделя» убирает переживание дня, остаются эпизоды памяти и их число
+  $('#wk').onclick = function () { var on = $('#wk').getAttribute('aria-pressed') !== 'true'; $('#wk').setAttribute('aria-pressed', on); $('#wk').textContent = on ? 'Вернуть день' : 'Пусть пройдёт неделя'; $('#days').classList.toggle('week', on); $('#cA').style.visibility = $('#cB').style.visibility = on ? 'visible' : 'hidden'; $('#wk-s').textContent = on ? 'Прошла неделя. Сравните, сколько осталось от каждого дня.' : 'Сначала день, как он переживался. Потом то, что от него осталось.'; };
+
   // зона 7: масштаб меняется только по выбору читателя; подпись печатается
   var ord = []; for (var i = 0; i < 60; i++) ord.push(i); ord.sort(function () { return Math.random() - .5; });
   var SC = [[18, 'День: много событий. Кофе, письмо, дорога, разговор: почти всё доступно.'], [7, 'Неделя: несколько опорных событий. Встреча, новость, поездка.'], [4, 'Месяц: несколько узлов. Важный разговор, праздник.'], [2, 'Год: несколько воспоминаний. Переезд, лето, начало чего-то нового.']];
@@ -53,7 +49,7 @@ window.T && window.T.mods.push('sections');
     return a <= 3 ? .05 : a <= 9 ? .35 : a <= 30 ? .9 : a <= 50 ? .28 : a <= 55 ? .45 : .8; }
   function note(p, i) { var a = i + 1;
     if (p === 7) return a <= 2 ? 'Год ' + a + ': почти ничего не сохранится, самые первые годы человек не вспоминает.' : a <= 4 ? 'Год ' + a + ': несколько отдельных ярких эпизодов.' : 'Год ' + a + ': недавний, поэтому помнится много. Каждый год пока составляет заметную часть всей жизни.';
-    return a <= 3 ? 'Год ' + a + ': почти ничего не сохранилось, как и у большинства людей.' : a <= 9 ? 'Год ' + a + ': несколько отдельных эпизодов: школа, дом, один-два события.' : a <= 30 ? 'Год ' + a + ': юность и молодость. У взрослых именно с этих лет приходится больше всего воспоминаний.' : a <= 50 ? 'Год ' + a + ': годы похожи друг на друга. Помнятся два-три события, остальное слилось в общую полосу работы и быта.' : a <= 55 ? 'Год ' + a + ': отдельные события, но уже не так отчётливо.' : 'Год ' + a + ': недавние годы помнятся лучше. Но один год — это лишь одна шестидесятая жизни.'; }
+    return a <= 3 ? 'Год ' + a + ': почти ничего не сохранилось, как и у большинства людей.' : a <= 9 ? 'Год ' + a + ': несколько отдельных эпизодов: школа, дом, одно-два события.' : a <= 30 ? 'Год ' + a + ': юность и молодость. У взрослых именно на эти годы приходится больше всего воспоминаний.' : a <= 50 ? 'Год ' + a + ': годы похожи друг на друга. Помнятся два-три события, остальное слилось в общую полосу работы и быта.' : a <= 55 ? 'Год ' + a + ': помнятся отдельные события, но уже не так отчётливо.' : 'Год ' + a + ': недавние годы помнятся лучше. Но один год — это лишь одна шестидесятая жизни.'; }
   [[7, '#y7'], [60, '#y60']].forEach(function (q) {
     var el = $(q[1]), h = ''; for (var i = 0; i < q[0]; i++) h += '<button class="yr" data-p="' + q[0] + '" data-i="' + i + '" style="--m:' + level(q[0], i) + '" aria-label="Год ' + (i + 1) + '"></button>'; el.innerHTML = h;
     el.addEventListener('click', function (e) { var b = e.target.closest('.yr'); if (!b) return; $$('.yr.sel').forEach(function (x) { x.classList.remove('sel'); }); b.classList.add('sel'); T.type($('#life-t'), T.nb(note(q[0], +b.dataset.i)), 18); });

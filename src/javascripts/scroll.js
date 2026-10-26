@@ -5,8 +5,8 @@ window.T && window.T.mods.push('scroll');
 (function () {
   var T = window.T, S = T.S, cl = T.cl, $ = function (s) { return document.querySelector(s); }, $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
   S.read = {}; S.last = {};
-  // режим без закрепления: телефон, низкое окно или «меньше движения»; состояния зоны 4 переключаются кнопками
-  var mq = matchMedia('(max-width:700px),(max-height:640px),(prefers-reduced-motion:reduce)'), rmq = matchMedia('(prefers-reduced-motion:reduce)');
+  // режим без закрепления: только по размеру окна (телефон или очень низкое окно); системная настройка «уменьшить движение» его больше не включает, она лишь выключает расплывание и печать текста
+  var mq = matchMedia('(max-width:700px),(max-height:520px)'), rmq = matchMedia('(prefers-reduced-motion:reduce)');
   T.fade = !rmq.matches;
   function setFlat() { T.flat = mq.matches; document.documentElement.classList.toggle('flat', T.flat); }
   setFlat(); if (mq.addEventListener) mq.addEventListener('change', function () { setFlat(); onS(); });
@@ -45,7 +45,7 @@ window.T && window.T.mods.push('scroll');
     var tpr = $('#turnp').getBoundingClientRect(), tpg = cl((H * .6 - tpr.top) / (H * .8)), nwd = T.turnWords.length;
     T.turnWords.forEach(function (w, i) { var o = T.fade ? 1 - .86 * cl((tpg * 1.2 - i / nwd) * 6, 0, 1) : 1; w.style.opacity = o.toFixed(2); w.style.filter = o < .99 ? 'blur(' + ((1 - o) * 4).toFixed(1) + 'px)' : ''; });
     // ночь: доля пройденной ночи (в режиме без закрепления показан конец ночи)
-    var r2 = z2.getBoundingClientRect(); if (r2.bottom > 0 && r2.top < H) T.night(T.flat ? 1 : cl(-r2.top / (r2.height - H) * 1.08));
+    var r2 = z2.getBoundingClientRect(); if (r2.bottom > 0 && r2.top < H) { try { T.night(T.flat ? 1 : cl(-r2.top / (r2.height - H) * 1.08)); } catch (e) { T.errs.push('night: ' + e.message); } }
     // зона 4: те же положения; сначала лишнее тускнеет на месте, потом отдельное событие — пересборка
     var r4 = z4.getBoundingClientRect(), p4 = T.flat ? STEP[step] : cl(-r4.top / (r4.height - H)), f = cl((p4 - .12) / .3), r = cl((p4 - .58) / .28), bg = cl((p4 - .12) / .35), e3 = r * r * (3 - 2 * r);
     pin.style.background = mix(P.paper, P.blue, bg); pin.style.color = mix(P.ink, P.paper, bg); z4.dataset.surf = bg > .5 ? 'b' : 'p';
@@ -55,7 +55,7 @@ window.T && window.T.mods.push('scroll');
       else n.style.opacity = Math.max(0, 1 - .9 * f - r);
     });
     rl4.style.opacity = 1 - r; $('#d4n').textContent = Math.round(5 + 6 * (1 - f));
-    cap.textContent = T.nb(r > .02 ? 'А теперь память собирает день заново: точки придвигаются друг к другу. Расстояния больше не измеряют время, остаётся только порядок.' : f > .25 ? 'Это те события, которые человек смог вспомнить. Места на линии прежние, остальные погасли.' : 'Спустя 7 дней был задан вопрос: что вы помните о том дне, какие события тогда происходили?');
+    cap.textContent = T.nb(r > .02 ? 'А теперь память собирает день заново: точки придвигаются друг к другу. Расстояния больше не измеряют время, остаётся только порядок.' : f > .25 ? 'Это те события, которые человек смог вспомнить. Остальные фрагменты стёрла память.' : 'Спустя 7 дней был задан вопрос: что вы помните о том дне, какие события тогда происходили?');
   }
   segb.forEach(function (b) { b.onclick = function () { step = +b.dataset.s; segb.forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); onS(); }; });
   // возврат: нажать можно только на уже прочитанную зону

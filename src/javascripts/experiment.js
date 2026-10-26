@@ -18,7 +18,7 @@ window.T && window.T.mods.push('experiment');
   function stop() {
     var v = (performance.now() - t1) / 1000; if (mode === 'wait') S.ex = v; else S.ex2 = v;
     $('#st-val').textContent = f(v) + ' с'; mark($('#st-you'), S.ex, S.ex2 === null ? 'вы' : 'следили'); mark($('#st-you2'), S.ex2, 'заняты');
-    $('#st-res').textContent = 'Высокая отметка — настоящие десять секунд, низкая — ваше нажатие.'; $('#st-busy2').style.display = S.ex2 !== null ? 'none' : 'inline-block'; go(2);
+    var d = v - 10; $('#st-res').innerHTML = '<p class="lead">' + (Math.abs(d) < .5 ? 'Почти ровно десять секунд.' : 'Вы нажали на <b>' + f(Math.abs(d)) + ' с ' + (d < 0 ? 'раньше' : 'позже') + '</b> настоящих десяти секунд.') + '</p>'; $('#st-busy2').style.display = S.ex2 !== null ? 'none' : 'inline-block'; go(2);
   }
   function explain() {
     var both = S.ex !== null && S.ex2 !== null;

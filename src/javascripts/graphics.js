@@ -10,7 +10,7 @@ window.T && window.T.mods.push('graphics');
   };
   T.pal();
   var rgba = function (a, al) { return 'rgba(' + a.join(',') + ',' + al + ')'; };
-  var nc = $('#nc'), nx = nc.getContext('2d'), lastA = '', lastB = '';
+  var nc = $('#nc'), nx = nc.getContext('2d') || new Proxy({}, { get: function () { return function () {}; }, set: function () { return true; } }), lastA = '', lastB = '';
   function rs() { var d = Math.min(devicePixelRatio || 1, 2); nc.width = nc.clientWidth * d; nc.height = nc.clientHeight * d; nx.setTransform(d, 0, 0, d, 0, 0); }
   var hm = function (m) { return T.pad(Math.floor(m / 60) % 24) + ':' + T.pad(m % 60); };
   var ang = function (m) { return m / 720 * 6.2832 - 1.5708; };

@@ -1,8 +1,8 @@
 /* Раскладка: зоны, закреплённые экраны, режим без закрепления. Текст набран колонкой до 64 знаков. */
 section,.zone{position:relative}
 .s{padding:var(--g3) var(--m)}
-.hero{min-height:100svh;display:flex;flex-direction:column;padding:var(--g3) var(--m)}
-.pin{position:sticky;top:0;height:100svh;overflow:hidden}
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;padding:var(--g3) var(--m)}
+.pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 .night{height:520vh}
 #z4{height:340vh}#z4 .pin{padding:var(--g2) 0 var(--g1)}
 .nend{padding:var(--g3) var(--m)}
