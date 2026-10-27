@@ -7,3 +7,4 @@ button,input{font:inherit;color:inherit}
 button{cursor:pointer;background:none;border:0}
 ul,ol{list-style:none}
 a{color:inherit}
+h1,h2,h3,p,li,a,button,span,b{overflow-wrap:break-word}

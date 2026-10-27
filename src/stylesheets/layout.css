@@ -1,4 +1,4 @@
-/* Раскладка: зоны, закреплённые экраны, режим без закрепления. Текст набран колонкой до 64 знаков. */
+/* Раскладка: зоны, закреплённые экраны, режим без закрепления. */
 section,.zone{position:relative}
 .s{padding:var(--g3) var(--m)}
 .hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;padding:var(--g3) var(--m)}
@@ -8,7 +8,7 @@ section,.zone{position:relative}
 .nend{padding:var(--g3) var(--m)}
 .fin{min-height:100vh}
 .foot{padding:var(--g3) var(--m)}
-/* без закрепления: телефон, низкое окно, «меньше движения» */
+/* без закрепления: только очень низкое окно (html.flat); для отдельной зоны, если её содержимое не помещается в экран, скрипт ставит класс .fl */
 html.flat .pin{position:static;height:auto;overflow:visible}
 html.flat .night,html.flat #z4,html.flat .stagewrap{height:auto}
 html.flat .nz,html.flat .d4{height:auto;padding-top:var(--g3);padding-bottom:var(--g3)}
@@ -16,3 +16,8 @@ html.flat .seg{display:flex}
 html.flat #z4 .pin{padding:0}
 html.flat .night-list{display:block}html.flat #nq,html.flat .chips,html.flat .live-only{display:none}
 html.flat .ph{position:static;opacity:1;transform:none;margin:var(--g2) auto}html.flat .stagewrap .pin{display:block;padding:var(--g3) var(--m)}
+.fl .pin{position:static;height:auto;overflow:visible}
+.night.fl,.stagewrap.fl{height:auto}
+.fl .nz{height:auto;padding-top:var(--g3);padding-bottom:var(--g3)}
+.fl .night-list{display:block}.fl #nq,.fl .chips,.fl .live-only{display:none}
+.stagewrap.fl .ph{position:static;opacity:1;transform:none;margin:var(--g2) auto}.stagewrap.fl .pin{display:block;padding:var(--g3) var(--m)}

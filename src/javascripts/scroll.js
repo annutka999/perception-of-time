@@ -6,7 +6,7 @@ window.T && window.T.mods.push('scroll');
   var T = window.T, S = T.S, cl = T.cl, $ = function (s) { return document.querySelector(s); }, $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
   S.read = {}; S.last = {};
   // режим без закрепления: только по размеру окна (телефон или очень низкое окно); системная настройка «уменьшить движение» его больше не включает, она лишь выключает расплывание и печать текста
-  var mq = matchMedia('(max-width:700px),(max-height:520px)'), rmq = matchMedia('(prefers-reduced-motion:reduce)');
+  var mq = matchMedia('(max-height:420px)'), mob = matchMedia('(max-width:900px)'), rmq = matchMedia('(prefers-reduced-motion:reduce)');
   T.fade = !rmq.matches;
   function setFlat() { T.flat = mq.matches; document.documentElement.classList.toggle('flat', T.flat); }
   setFlat(); if (mq.addEventListener) mq.addEventListener('change', function () { setFlat(); onS(); });
@@ -27,9 +27,10 @@ window.T && window.T.mods.push('scroll');
     // первый экран: таймер и название уходят вверх по мере прокрутки
     heroin.style.setProperty('--he', cl(-hero.getBoundingClientRect().top / (hero.offsetHeight * .75)));
     // вступление: сколько прокрутки занимает фраза, столько она «длится»; первая долго, вторая мельком, третья сжимается до нескольких слов
-    if (!T.flat) { var ri = intro.getBoundingClientRect(), pi = cl(-ri.top / (ri.height - H));
+    if (!T.flat && !intro.classList.contains('fl')) { var ri = intro.getBoundingClientRect(), pi = cl(-ri.top / (ri.height - H));
       var O = [ramp(pi, 0, .05) * (1 - ramp(pi, .33, .38)), ramp(pi, .38, .4) * (1 - ramp(pi, .48, .5)), ramp(pi, .5, .55) * (1 - ramp(pi, .74, .78)), ramp(pi, .8, .86)];
       ph.forEach(function (e, i) { e.style.setProperty('--o', O[i].toFixed(3)); }); ph[2].style.setProperty('--dm', (1 - .9 * ramp(pi, .6, .68)).toFixed(3)); }
+    document.documentElement.style.setProperty('--sp', cl(scrollY / Math.max(1, document.documentElement.scrollHeight - H)).toFixed(3));
     // забывание: только после экрана-поворота и только то, что уже прокручено выше экрана; вернувшись к тексту, вы видите его резким
     fs.forEach(function (e) {
       var pos = turn.compareDocumentPosition(e), after = (pos & 4) && !(pos & 16), r = e.getBoundingClientRect();
@@ -45,9 +46,9 @@ window.T && window.T.mods.push('scroll');
     var tpr = $('#turnp').getBoundingClientRect(), tpg = cl((H * .6 - tpr.top) / (H * .8)), nwd = T.turnWords.length;
     T.turnWords.forEach(function (w, i) { var o = T.fade ? 1 - .86 * cl((tpg * 1.2 - i / nwd) * 6, 0, 1) : 1; w.style.opacity = o.toFixed(2); w.style.filter = o < .99 ? 'blur(' + ((1 - o) * 4).toFixed(1) + 'px)' : ''; });
     // ночь: доля пройденной ночи (в режиме без закрепления показан конец ночи)
-    var r2 = z2.getBoundingClientRect(); if (r2.bottom > 0 && r2.top < H) { try { T.night(T.flat ? 1 : cl(-r2.top / (r2.height - H) * 1.08)); } catch (e) { T.errs.push('night: ' + e.message); } }
+    var r2 = z2.getBoundingClientRect(); if (r2.bottom > 0 && r2.top < H) { try { T.night(T.flat || z2.classList.contains('fl') ? 1 : cl(-r2.top / (r2.height - H) * 1.08)); } catch (e) { T.errs.push('night: ' + e.message); } }
     // зона 4: те же положения; сначала лишнее тускнеет на месте, потом отдельное событие — пересборка
-    var r4 = z4.getBoundingClientRect(), p4 = T.flat ? STEP[step] : cl(-r4.top / (r4.height - H)), f = cl((p4 - .12) / .3), r = cl((p4 - .58) / .28), bg = cl((p4 - .12) / .35), e3 = r * r * (3 - 2 * r);
+    var r4 = z4.getBoundingClientRect(), p4 = T.flat ? STEP[step] : mob.matches ? (function () { var tr = $('#day4').getBoundingClientRect(); return cl((H * .9 - tr.top) / (tr.height + H * .45)); })() : cl(-r4.top / (r4.height - H)), f = cl((p4 - .12) / .3), r = cl((p4 - .58) / .28), bg = cl((p4 - .12) / .35), e3 = r * r * (3 - 2 * r);
     pin.style.background = mix(P.paper, P.blue, bg); pin.style.color = mix(P.ink, P.paper, bg); z4.dataset.surf = bg > .5 ? 'b' : 'p';
     ev.forEach(function (n) {
       var a = +n.dataset.a, t = +n.dataset.t;
@@ -64,6 +65,15 @@ window.T && window.T.mods.push('scroll');
   var tn = $('#tnote'), tt_ = $('#tnote-t'), tp_ = $('#tnote-p'), tmo = 0;
   function note(t, p) { tn.hidden = false; tt_.textContent = t; T.type(tp_, p, 24); clearTimeout(tmo); tmo = setTimeout(function () { tn.hidden = true; }, 16000); }
   tn.querySelector('.x').onclick = function () { tn.hidden = true; };
+  // если содержимое закреплённой зоны не помещается в экран (малая высота телефона, большой шрифт), эта зона показывается обычным потоком, а не обрезается
+  function fit() {
+    ['#z2', '#intro'].forEach(function (id) {
+      var z = $(id), over = false; z.classList.remove('fl');
+      if (!T.flat) { if (id === '#z2') { var nz = z.querySelector('.nz'); over = nz.scrollHeight > nz.clientHeight + 4; } else $$('#intro .ph').forEach(function (p) { if (p.offsetHeight > innerHeight * .86) over = true; }); }
+      z.classList.toggle('fl', over);
+    });
+  }
+  T.fit = fit; addEventListener('resize', fit); addEventListener('load', fit); fit();
   T.onScroll = onS; addEventListener('scroll', onS, { passive: true }); addEventListener('resize', onS); onS();
   // ориентация и прочитанное: таймер первого экрана, цвет полосы, зоны, которые вы уже прошли
   var sf = '', lastT = '', lastN = -1, lastZ = 0;

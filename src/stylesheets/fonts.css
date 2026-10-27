@@ -6,7 +6,7 @@
   --sans:'Geist','Inter',Arial,sans-serif;                       /* заголовки, текст, названия, числа */
   --serif:'Cormorant','Cormorant Garamond',Georgia,serif;          /* только речь: вопросы, реплики (курсив, один акцент) */
   --paper:#F1F1EE;--ink:#0B0B0B;--graphite:#555553;
-  --fs-tag:.875rem;--fs-cap:1rem;--fs-text:1.125rem;
+  --fs-tag:1rem;--fs-cap:1rem;--fs-text:1.125rem;
   --fs-lead:1.5rem;
   --fs-speech:clamp(1.75rem,3vw,2.75rem);
   --fs-title:clamp(2.25rem,5.5vw,4.5rem);
